@@ -11,7 +11,7 @@ router.get('/', async function (ctx, next) {
         user: env.username,
         password: env.password,
         database: 'lehui',
-        dest: './backup/' + timestamp() + '-lehui.sql' // destination file
+        dest: './backup/' + timestamp() + '-db.sql'
     }, function (err) {
         // create data.sql file;
     })
