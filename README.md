@@ -83,7 +83,9 @@
 
     -- 3.定义 router 也就是 api 文件 URL，这里可能操作一个 dao，也可能操作好几个 dao
 
-    -- 4.我们以 model-->dao-->router 的顺序来开发，有时候，一个 router 并不只是调用了一个 dao，或者一个 dao 也不止调用了一个 model，这时候，我们以入口，或者主要的 model 来决定放置 router 文件的位置，比如：我们要要开发查询一个用户下有多少本书的接口，我们可以放在 user 下，添加一个 list_include_books 的接口即可；
+    -- 4.我们以 model-->dao-->router 的顺序来开发，有时候，一个 router 并不只是调用了一个 dao，或者一个 dao 也不止调用了一个 model，这时候，我们以入口，或者主要的 model 来决定放置 router 文件的位置，比如：我们要要开发查询一个用户下有多少本书的接口，我们可以放在 user 下，添加一个 list_include_books 的接口即可
+
+    -- 5.有的 router 可能不涉及到 dao 操作，比如 sms，file，webhook，此时，我们可以按照功能的分类来组织模块
 
 #### DAO 详解：
 
