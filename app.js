@@ -29,7 +29,7 @@ let router = new Router();
 let app = new Koa();
 
 // 指定端口
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 4000;
 
 // 设置 proxy 为 true,那么就可以在请求里拿到实际 IP
 app.proxy = true;

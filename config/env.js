@@ -1,19 +1,47 @@
 let env = {
     dev: {
-        logging: true, // 是否打印数据库查询日志
-        username: 'root',
-        password: 'lehui@2018',
-        host: '47.104.137.247',
-        port: 3306,
-        baseUrl: 'http://localhost:3002'
+        mysql: {
+            logging: true, // 是否打印数据库查询日志
+            username: 'root',
+            password: 'lehui@2018',
+            host: '47.104.137.247',
+            port: 3306,
+            baseUrl: 'http://localhost:3002'
+        },
+        oss: {
+            region: 'oss-cn-qingdao',
+            accessKeyId: 'LTAIylL1Od2ZnZzi',
+            accessKeySecret: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
+            bucket: 'feimao-shop'
+        },
+        sms: {
+            accessKeyId : 'LTAIylL1Od2ZnZzi',
+            secretAccessKey : '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
+            TemplateCode: 'SMS_134321227',
+            SignName: '肥猫优生活'
+        }
     },
     online: {
-        logging: false,
-        username: 'root',
-        password: 'lehui@2018',
-        host: '47.104.137.247',
-        port: 3306,
-        baseUrl: 'https://pay.feimao.shop'
+        mysql: {
+            logging: false,
+            username: 'root',
+            password: 'lehui@2018',
+            host: '47.104.137.247',
+            port: 3306,
+            baseUrl: 'https://pay.feimao.shop'
+        },
+        oss: {
+            region: 'oss-cn-qingdao',
+            accessKeyId: 'LTAIylL1Od2ZnZzi',
+            accessKeySecret: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
+            bucket: 'feimao-shop'
+        },
+        sms: {
+            accessKeyId : 'LTAIylL1Od2ZnZzi',
+            secretAccessKey : '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
+            TemplateCode: 'SMS_134321227',
+            SignName: '肥猫优生活'
+        }
     }
 };
 

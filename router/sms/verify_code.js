@@ -4,8 +4,8 @@ let Sequelize = require("sequelize");
 let random = require("../../utils/lib/random");
 let http = require("../../utils/lib/http");
 let SMSClient = require('@alicloud/sms-sdk')
-
 let daoUser = require('../../dao/user');
+let { sms } = require('../../config/env');
 
 // 用户注册逻辑
 // 1.是否发验证码，是否存在手机号？存在，更新验证码，不存在，插入验证码
@@ -39,16 +39,16 @@ router.post("/", async function (ctx, next) {
       });
   }
 
-  const accessKeyId = 'LTAIylL1Od2ZnZzi'
-  const secretAccessKey = '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ'
+  const accessKeyId = sms.accessKeyId
+  const secretAccessKey = sms.secretAccessKey
 
   let smsClient = new SMSClient({ accessKeyId, secretAccessKey });
 
   //发送短信
   smsClient.sendSMS({
     PhoneNumbers: post.phone,
-    SignName: '肥猫优生活',
-    TemplateCode: 'SMS_134321227',
+    SignName: sms.SignName,
+    TemplateCode: sms.TemplateCode,
     TemplateParam: '{"code":"' + code + '"}'
   }).then(function (res) {
 

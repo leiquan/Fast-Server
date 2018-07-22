@@ -56,7 +56,7 @@ const sessionConfig = {
     signed: true, // 是否签名
     rolling: false, // 是否每次cookie都要改变
     renew: false, // 是否再session快要过期的时候刷新
-    store: store // 实现三个接口的cookies存储方式
+    // store: store // 实现三个接口的cookies存储方式
 };
 
 module.exports = sessionConfig;

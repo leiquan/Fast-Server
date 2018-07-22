@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
-let env = require('./env');
 
-const sequelize = new Sequelize('agile_server', env.username, env.password, {
-  host: env.host,
-  port: env.port,
+const { mysql } = require('./env');
+
+const sequelize = new Sequelize('agile_server', mysql.username, mysql.password, {
+  host: mysql.host,
+  port: mysql.port,
   dialect: 'mysql',
   pool: {
     max: 5,
@@ -22,7 +23,7 @@ sequelize.authenticate().then(() => {
 });
 
 // 同步数据库模型到数据库
-sequelize.sync({ logging: env.logging }).then(() => console.log('同步数据库模型成功...'));
+sequelize.sync({ logging: mysql.logging }).then(() => console.log('同步数据库模型成功...'));
 
 // 公用一个静态变量实例，提升性能
 module.exports = sequelize;

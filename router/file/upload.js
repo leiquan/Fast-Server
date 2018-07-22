@@ -5,9 +5,10 @@ let os = require('os');
 var co = require('co');
 var OSS = require('ali-oss');
 
-let  ossConfig = require('../../config/oss');
+let { oss } = require('../../config/env');
 
-var client = new OSS(ossConfig);
+
+var client = new OSS(oss);
 
 let { timestamp, datestamp } = require('../../utils/lib/time');
 
