@@ -3,8 +3,8 @@ let env = {
         mysql: {
             logging: true, // 是否打印数据库查询日志
             username: 'root',
-            password: 'lehui@2018',
-            host: '47.104.137.247',
+            password: '930102@My',
+            host: '27.102.114.139',
             port: 3306,
             baseUrl: 'http://localhost:3002'
         },

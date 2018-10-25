@@ -18,7 +18,8 @@ router.post('/', async function (ctx, next) {
 
   let res_user = await dao.list({
     phone: post.phone,
-    password: md5(post.password)
+    // password: md5(post.password)
+    password: post.password
   });
 
   if (res_user.count > 0) {
