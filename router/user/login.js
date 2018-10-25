@@ -18,8 +18,7 @@ router.post('/', async function (ctx, next) {
 
   let res_user = await dao.list({
     phone: post.phone,
-    // password: md5(post.password)
-    password: post.password
+    password: md5(post.password) // 测试密码11111，phone 为8888， 加密方式为：32位小写 MD5
   });
 
   if (res_user.count > 0) {
@@ -32,12 +31,11 @@ router.post('/', async function (ctx, next) {
       phone: res_user.rows[0].phone
     }
 
-    console.log(ctx.session._expire, new Date().getTime());
+    console.log('登录成功', ctx.session);
 
   } else {
     code = 1;
     msg = '账号密码不匹配';
-
     ctx.session.user = null;
   }
 
