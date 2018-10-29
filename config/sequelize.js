@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const { mysql } = require('./env');
 
-const sequelize = new Sequelize('agile_server', mysql.username, mysql.password, {
+const sequelize = new Sequelize(mysql.dbname, mysql.username, mysql.password, {
   host: mysql.host,
   port: mysql.port,
   dialect: 'mysql',

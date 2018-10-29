@@ -7,7 +7,7 @@ let daoName = path.basename(__dirname);
 let dao = require('../../dao/' + daoName);
 
 let daoUser = require('../../dao/user');
-let trimPost = require('../../utils/pre/trimPost');
+let trimPost = require('../../utils/routerPre/trimPost');
 let md5 = require('../../utils/lib/md5');
 
 // 用户注册逻辑

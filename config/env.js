@@ -2,6 +2,7 @@ let env = {
     dev: {
         mysql: {
             logging: true, // 是否打印数据库查询日志
+            dbname: 'agile_server',
             username: 'root',
             password: '930102@My',
             host: '27.102.114.139',
@@ -24,6 +25,7 @@ let env = {
     online: {
         mysql: {
             logging: false,
+            dbname: 'agile_server',
             username: 'root',
             password: 'lehui@2018',
             host: '47.104.137.247',

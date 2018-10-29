@@ -1,5 +1,5 @@
-let authConfig = require('../../config/auth');
-let globalStatus = require('../../config/status');
+let authConfig = require('../../config/loginAuth');
+let globalStatus = require('../../config/globalStatus');
 
 let authHandler = async function (ctx, next) {
 
