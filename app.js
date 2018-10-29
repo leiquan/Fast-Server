@@ -8,6 +8,9 @@ let xmlParser = require('koa-xml-body');
 var session = require('koa-generic-session');
 var redisStore = require('koa-redis');
 
+let router = new Router();
+let app = new Koa();
+
 // 引入路由
 let routes = require('./router/routes');
 
@@ -16,23 +19,16 @@ let routes = require('./router/routes');
 // 其实开发接口并不需要 static，但是可能会上传一些文件什么的
 // app.use(static(__dirname + '/public'));
 
-// 引入自定义的错误处理中间件
-// let error = require('./utils/midware/error');
+// 引入自定义的错误处理中间件，使用自定义 404、500 处理插件
+let error = require('./utils/midware/error');
+app.use(error);
 
 // 引入自定义的用户认证中间件
-// let auth = require('./utils/midware/auth');
+let auth = require('./utils/midware/auth');
+app.use(auth);
 
 // 引入定时任务实例，注意，引入即生效
-// let cronBackupDB = require('./utils/cron/backupDB');
-
-// 用户登录权限鉴定
-// app.use(auth);
-
-// 使用自定义 404、500 处理插件
-// app.use(error);
-
-let router = new Router();
-let app = new Koa();
+let cronBackupDB = require('./utils/cron/backupDB');
 
 // 指定端口
 let port = process.env.PORT || 4000;
