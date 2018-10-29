@@ -1,5 +1,5 @@
 let authConfig = require('../../config/loginAuth');
-let globalStatus = require('../../config/globalStatus');
+let globalVariable = require('../../config/globalVariable');
 
 let authHandler = async function (ctx, next) {
 
@@ -19,9 +19,10 @@ let authHandler = async function (ctx, next) {
          * 通过校验session中是否有用户信息
          */
         if (!ctx.session.user) {
-            ctx.body = globalStatus.not_login
+            ctx.body = globalVariable.status.not_login
         } else if (ctx.session._expire < new Date().getTime()) {
-            ctx.body = globalStatus.login_expired
+            ctx.body = globalVariable.status.not_login
+            ctx.body = globalVariable.status.login_expired
         } else {
             await next();
         }

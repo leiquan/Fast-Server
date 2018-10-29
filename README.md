@@ -40,12 +40,10 @@
 #### 代码结构：
 
     -- config 配置文件
-        -- auth 需要认证的 URL 的配置
+        -- loginAuth 需要认证的 URL 的配置
         -- env 环境变量配置
-        -- oss 阿里云的 OSS 的参数配置
         -- sequelize MySQL 数据库配置
-        -- session 会话配置
-        -- status 全局状态配置
+        -- globalVariable 全局变量统一配置
 
     -- dao 数据操作方法，自带有基本方法，可自定义方法
 
