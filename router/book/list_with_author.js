@@ -13,7 +13,7 @@ router.post('/', async function (ctx, next) {
   let page = get.page ? parseInt(get.page) : null;
   let pageSize = get.pageSize ? parseInt(get.pageSize) : null;
 
-  let data = await dao.list_include_author(post);
+  let data = await dao.list_with_author(post);
 
   ctx.body = {
     code: 0,

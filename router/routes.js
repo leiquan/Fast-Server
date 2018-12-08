@@ -21,23 +21,25 @@ let routes = function (router) {
     // ****** utils 常用接口，数据库备份 ******
     '/utils/db_backup': './utils/db_backup',
 
-    // ****** book 以下为标准接口，增删改查，自增、计数、求和、模糊搜索，以下接口绝大部分可以完全复用或者稍作修改后复用 ******
+    // ****** book 以下为8个标准接口，增删改查，自增、计数、求和、模糊搜索，以下接口绝大部分可以完全复用或者稍作修改后复用 ******
     '/book/add': './book/add',
     '/book/delete': './book/delete',
     '/book/update': './book/update',
     '/book/list': './book/list', // 默认有分页功能
-    '/book/list_include_author': './book/list_include_author', // 默认有分页功能
     '/book/all': './book/all', // 默认列出全部
     '/book/increment': './book/increment',
     '/book/count': './book/count',
     '/book/sum': './book/sum',
-    '/book/search': './book/search',
+
+    // 以下两个接口需要自定义修改，复用非常简单
+    '/book/list_with_author': './book/list_with_author', // 这个接口做关联查询，需要研究明白，然后所有的关联查询就非常的轻松
+    '/book/search': './book/search', // 模糊搜索接口，需要设置搜索字段
 
     // 复制自 book 接口，其他接口完全可以参照
     '/author/add': './author/add',
     '/author/list': './author/list',
     '/author/search': './author/search',
-
+    '/author/list_include_books': './author/list_include_books'
 
   };
   for (x in controller) {

@@ -25,7 +25,8 @@
 							"urlencoded": [
 								{
 									"key": "title",
-									"value": "《狂人日记》",
+									"value": "《呐喊》",
+									"description": "添加两本书，一本《狂人日记》，一本《呐喊》",
 									"type": "text"
 								},
 								{
@@ -362,6 +363,34 @@
 					"response": []
 				},
 				{
+					"name": "列出书籍，包含作者（一个）",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/book/list_include_author",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"list_include_author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "删除书籍",
 					"request": {
 						"method": "POST",
@@ -507,34 +536,6 @@
 							"path": [
 								"user",
 								"reg"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "列出书籍，包含作者",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							}
-						],
-						"body": {},
-						"url": {
-							"raw": "http://localhost:3000/book/list_include_author",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"book",
-								"list_include_author"
 							]
 						}
 					},
@@ -745,6 +746,44 @@
 							"path": [
 								"author",
 								"search"
+							]
+						},
+						"description": "列出书籍，默认10条数据，有翻页功能"
+					},
+					"response": []
+				},
+				{
+					"name": "列出作者，包含所有书籍（多个）",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "鲁迅",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/author/list_include_books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"author",
+								"list_include_books"
 							]
 						},
 						"description": "列出书籍，默认10条数据，有翻页功能"

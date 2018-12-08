@@ -1,8 +1,8 @@
 
-// 这里设置全局的 status
-// 注意，全局的 status 为负数，接口级的 status 为正数
+// 这里设置全局变量，在这里统一
 const globalVariable = {
-    
+
+    // 注意，全局的 status 为负数，接口级的 status 为正数
     status: {
         not_login: {
             code: -1,

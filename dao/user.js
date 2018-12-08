@@ -33,12 +33,13 @@ let dao = {
         return data;
     },
 
-    list: async function (whereJson = {}, page = 1, pageSize = 10) {
+    list: async function (whereJson = {}, include = [], page = 1, pageSize = 10) {
         let data = await model.findAndCountAll({
             logging: env.logging,
             where: whereJson,
             offset: pageSize * (page - 1),
-            limit: pageSize
+            limit: pageSize,
+            include
         });
         return data;
     },
