@@ -7,7 +7,7 @@ let routes = function (router) {
 
     // ****** user 常用接口，登录，注册，修改密码 ******
     '/user/login': './user/login',
-    '/user/add': './user/add',
+    '/user/reg': './user/reg',
     '/user/modpwd': './user/modpwd',
 
     // ****** sms 短信发送接口 ******

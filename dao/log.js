@@ -16,7 +16,25 @@ let dao = {
         return data;
     },
 
-    list: async function (page = 1, pageSize = 10, whereJson = {}) {
+    delete: async function (id = null) {
+        let data = await model.destroy({
+            where: {
+                id: id
+            },
+            logging: env.logging,
+        });
+        return data;
+    },
+
+    update: async function (updateJson = {}, whereJson = {}) {
+        let data = await model.update(updateJson, {
+            where: whereJson,
+            logging: env.logging,
+        });
+        return data;
+    },
+
+    list: async function (whereJson = {}, page = 1, pageSize = 10) {
         let data = await model.findAndCountAll({
             logging: env.logging,
             where: whereJson,
@@ -26,21 +44,32 @@ let dao = {
         return data;
     },
 
-    update: async function (whereJson = {}, updateJson = {}) {
-        let data = await model.update(updateJson, {
-            where: whereJson,
+    all: async function (whereJson = {}) {
+        let data = await model.findAndCountAll({
             logging: env.logging,
+            where: whereJson
         });
         return data;
     },
 
+    sum: async function (cloum, whereJson) {
+        let data = await model.sum(cloum, {
+            where: whereJson
+        });
+        return data;
+    },
 
-    delete: async function (id = null) {
-        let data = await model.destroy({
-            where: {
-                id: id
-            },
-            logging: env.logging,
+    count: async function () {
+        let data = await model.count({
+            logging: env.logging
+        });
+        return data;
+    },
+
+    increment: async function (cloumArray = [], whereJson = {}, by = 1) {
+        let data = await model.increment(cloumArray, {
+            by: by,
+            where: whereJson
         });
         return data;
     }

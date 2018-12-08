@@ -7,7 +7,6 @@ let model = require('../models/' + modelName);
 
 let dao = {
 
-    // 增
     add: async function (addJson) {
         let data = await model.create(addJson,
             {
@@ -17,7 +16,6 @@ let dao = {
         return data;
     },
 
-    // 删
     delete: async function (id = null) {
         let data = await model.destroy({
             where: {
@@ -28,7 +26,6 @@ let dao = {
         return data;
     },
 
-    // 改
     update: async function (updateJson = {}, whereJson = {}) {
         let data = await model.update(updateJson, {
             where: whereJson,
@@ -37,7 +34,6 @@ let dao = {
         return data;
     },
 
-    // 查
     list: async function (whereJson = {}, page = 1, pageSize = 10) {
         let data = await model.findAndCountAll({
             logging: env.logging,
@@ -48,7 +44,6 @@ let dao = {
         return data;
     },
 
-    // 查全部
     all: async function (whereJson = {}) {
         let data = await model.findAndCountAll({
             logging: env.logging,
@@ -57,7 +52,6 @@ let dao = {
         return data;
     },
 
-    // 求和
     sum: async function (cloum, whereJson) {
         let data = await model.sum(cloum, {
             where: whereJson
@@ -65,7 +59,6 @@ let dao = {
         return data;
     },
 
-    // 计数
     count: async function () {
         let data = await model.count({
             logging: env.logging
@@ -73,14 +66,11 @@ let dao = {
         return data;
     },
 
-    // 自增
     increment: async function (cloumArray = [], whereJson = {}, by = 1) {
-
         let data = await model.increment(cloumArray, {
             by: by,
             where: whereJson
         });
-
         return data;
     }
 }

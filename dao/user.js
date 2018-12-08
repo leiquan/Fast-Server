@@ -16,12 +16,12 @@ let dao = {
         return data;
     },
 
-    list: async function (whereJson = {}, page = 1, pageSize = 10) {
-        let data = await model.findAndCountAll({
+    delete: async function (id = null) {
+        let data = await model.destroy({
+            where: {
+                id: id
+            },
             logging: env.logging,
-            where: whereJson,
-            offset: pageSize * (page - 1),
-            limit: pageSize
         });
         return data;
     },
@@ -34,12 +34,42 @@ let dao = {
         return data;
     },
 
-    delete: async function (id = null) {
-        let data = await model.destroy({
-            where: {
-                id: id
-            },
+    list: async function (whereJson = {}, page = 1, pageSize = 10) {
+        let data = await model.findAndCountAll({
             logging: env.logging,
+            where: whereJson,
+            offset: pageSize * (page - 1),
+            limit: pageSize
+        });
+        return data;
+    },
+
+    all: async function (whereJson = {}) {
+        let data = await model.findAndCountAll({
+            logging: env.logging,
+            where: whereJson
+        });
+        return data;
+    },
+
+    sum: async function (cloum, whereJson) {
+        let data = await model.sum(cloum, {
+            where: whereJson
+        });
+        return data;
+    },
+
+    count: async function () {
+        let data = await model.count({
+            logging: env.logging
+        });
+        return data;
+    },
+
+    increment: async function (cloumArray = [], whereJson = {}, by = 1) {
+        let data = await model.increment(cloumArray, {
+            by: by,
+            where: whereJson
         });
         return data;
     }

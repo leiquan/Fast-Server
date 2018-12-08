@@ -42,6 +42,7 @@ const model = sequelize.define(modelName, {
     comment: '0为默认状态; 正数为各种有效状态;',
     defaultValue: 0
   }
+
 }, {
     underscored: true,
     freezeTableName: true,
