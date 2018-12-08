@@ -16,10 +16,17 @@ let env = {
             bucket: 'feimao-shop'
         },
         sms: {
-            accessKeyId : 'LTAIylL1Od2ZnZzi',
-            secretAccessKey : '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
+            accessKeyId: 'LTAIylL1Od2ZnZzi',
+            secretAccessKey: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
             TemplateCode: 'SMS_134321227',
             SignName: '肥猫优生活'
+        },
+        redis: {
+            port: 6379,
+            host: '27.102.114.139',
+            family: 4,
+            password: '12345@yhr',
+            db: 1
         }
     },
     online: {
@@ -39,10 +46,17 @@ let env = {
             bucket: 'feimao-shop'
         },
         sms: {
-            accessKeyId : 'LTAIylL1Od2ZnZzi',
-            secretAccessKey : '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
+            accessKeyId: 'LTAIylL1Od2ZnZzi',
+            secretAccessKey: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
             TemplateCode: 'SMS_134321227',
             SignName: '肥猫优生活'
+        },
+        redis: {
+            port: 6379,
+            host: '27.102.114.139',
+            family: 4,
+            password: '12345@yhr',
+            db: 1
         }
     }
 };

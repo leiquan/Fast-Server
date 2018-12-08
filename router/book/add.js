@@ -6,6 +6,7 @@ let dao = require('../../dao/' + path.basename(__dirname));
 
 router.post('/', async function (ctx, next) {
 
+  let get = ctx.request.query;
   let post = ctx.request.body;
 
   let data = await dao.add(post);

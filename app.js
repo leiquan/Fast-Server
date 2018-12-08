@@ -8,6 +8,8 @@ let xmlParser = require('koa-xml-body');
 var session = require('koa-generic-session');
 var redisStore = require('koa-redis');
 let daoLog = require('./dao/log');
+let env = require('./config/env');
+let redis = require('./config/redis');
 
 let router = new Router();
 let app = new Koa();
@@ -50,11 +52,11 @@ app.context.return = function (code = -1, message = '', data = null) {
 }
 
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
-app.context.log = function ( key = 'untitled log', value = '') {
+app.context.log = function (key = 'untitled log', value = '') {
   daoLog.add({
     key,
     value
-});
+  });
 }
 
 // 使用 Redis 存储 session，到期 Redis 自动删除
@@ -69,10 +71,10 @@ app.use(session({
     signed: true
   },
   store: redisStore({
-    host: '27.102.114.139',
-    port: 6379,
-    auth_pass: '12345@yhr',
-    db: 0
+    host: env.redis.host,
+    port: env.redis.port,
+    auth_pass: env.redis.password,
+    db: 0, // session 放在 db0,log 放在 db1
   })
 }));
 
