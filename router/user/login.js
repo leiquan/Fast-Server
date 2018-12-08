@@ -10,10 +10,6 @@ router.post('/', async function (ctx, next) {
 
   let post = ctx.request.body;
 
-  let code = -1;
-  let msg = null;
-  let data = null;
-
   let res_user = await dao.list({
     phone: post.phone,
     password: md5(post.password) // 加密方式为：32位小写 MD5

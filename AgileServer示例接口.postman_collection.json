@@ -84,7 +84,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/book/update?author=雷全",
+							"raw": "http://localhost:3000/book/update?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -96,8 +96,8 @@
 							],
 							"query": [
 								{
-									"key": "author",
-									"value": "雷全"
+									"key": "id",
+									"value": "1"
 								}
 							]
 						}
@@ -118,7 +118,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:3000/book/list",
+							"raw": "http://localhost:3000/book/list?page=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -127,6 +127,12 @@
 							"path": [
 								"book",
 								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
 							]
 						},
 						"description": "列出书籍，默认10条数据，有翻页功能"
@@ -149,14 +155,14 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "author",
-									"value": "雷全",
+									"key": "author_id",
+									"value": "1",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/book/list?id=1",
+							"raw": "http://localhost:3000/book/list",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -165,12 +171,6 @@
 							"path": [
 								"book",
 								"list"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
 							]
 						}
 					},
@@ -188,16 +188,7 @@
 								"value": "application/x-www-form-urlencoded"
 							}
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "author",
-									"value": "雷全",
-									"type": "text"
-								}
-							]
-						},
+						"body": {},
 						"url": {
 							"raw": "http://localhost:3000/book/all",
 							"protocol": "http",
@@ -258,8 +249,8 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "author",
-									"value": "雷全",
+									"key": "author_id",
+									"value": "1",
 									"type": "text"
 								}
 							]
@@ -302,8 +293,8 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "author",
-									"value": "雷",
+									"key": "title",
+									"value": "《",
 									"type": "text"
 								}
 							]
@@ -340,14 +331,14 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "author",
-									"value": "雷",
+									"key": "author_id",
+									"value": "1",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/book/increment",
+							"raw": "http://localhost:3000/book/increment?cloum=sale_count&by=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -356,6 +347,16 @@
 							"path": [
 								"book",
 								"increment"
+							],
+							"query": [
+								{
+									"key": "cloum",
+									"value": "sale_count"
+								},
+								{
+									"key": "by",
+									"value": "2"
+								}
 							]
 						},
 						"description": "列出书籍，默认10条数据，有翻页功能"
@@ -376,7 +377,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:3000/book/list_include_author",
+							"raw": "http://localhost:3000/book/list_with_author",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -384,7 +385,7 @@
 							"port": "3000",
 							"path": [
 								"book",
-								"list_include_author"
+								"list_with_author"
 							]
 						}
 					},
@@ -402,33 +403,9 @@
 								"value": "application/x-www-form-urlencoded"
 							}
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "title",
-									"value": "JS 权威指南",
-									"type": "text"
-								},
-								{
-									"key": "author",
-									"value": "雷全",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "适合新人的第一本入门书",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "100.50",
-									"type": "text"
-								}
-							]
-						},
+						"body": {},
 						"url": {
-							"raw": "http://localhost:3000/book/delete",
+							"raw": "http://localhost:3000/book/delete?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -437,6 +414,12 @@
 							"path": [
 								"book",
 								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -536,6 +519,34 @@
 							"path": [
 								"user",
 								"reg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "列出用户",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/user/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"list"
 							]
 						}
 					},

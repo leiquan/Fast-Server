@@ -6,9 +6,9 @@ let dao = require('../../dao/' + path.basename(__dirname));
 
 router.post('/', async function (ctx, next) {
 
-  let query = ctx.request.query;
+  let get = ctx.request.query;
 
-  let data = await dao.delete(query.id);
+  let data = await dao.delete(get.id);
 
   return ctx.return(0, '', data);
 

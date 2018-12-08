@@ -10,10 +10,10 @@ router.post('/', async function (ctx, next) {
 
   let get = ctx.request.query;
   let post = ctx.request.body;
-  let page = get.page ? parseInt(get.page) : null;
-  let pageSize = get.pageSize ? parseInt(get.pageSize) : null;
+  let page = get.page;
+  let pageSize = get.pageSize;
 
-  let data = await dao.list_with_author(post);
+  let data = await dao.list_with_author(post, page, pageSize);
 
   return ctx.return(0, '', data);
 

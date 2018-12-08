@@ -11,8 +11,8 @@ router.post('/', async function (ctx, next) {
   let post = ctx.request.body;
 
   let whereJson = {
-    author: {
-      [Op.like]: '%' + post.author + '%'
+    title: {
+      [Op.like]: '%' + post.title + '%'
     }
   };
 

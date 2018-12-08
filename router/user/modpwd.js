@@ -23,7 +23,6 @@ router.post('/', async function (ctx, next) {
 
   return ctx.return(0, '密码修改成功！', data);
 
-
 });
 
 module.exports = router.routes();

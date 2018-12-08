@@ -33,13 +33,12 @@ let dao = {
         return data;
     },
 
-    list: async function (whereJson = {}, include = [], page = 1, pageSize = 10) {
+    list: async function (whereJson = {}, page = 1, pageSize = 10) {
         let data = await model.findAndCountAll({
             logging: env.logging,
             where: whereJson,
             offset: pageSize * (page - 1),
-            limit: pageSize,
-            include
+            limit: pageSize
         });
         return data;
     },
@@ -75,7 +74,7 @@ let dao = {
     },
 
     // 关联查询，请仔细研究这里的写法
-    list_with_author: async function (whereJson = {}, include = [], page = 1, pageSize = 10) {
+    list_with_author: async function (whereJson = {}, page = 1, pageSize = 10) {
         let data = await model.findAndCountAll({
             logging: env.logging,
             where: whereJson,
