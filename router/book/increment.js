@@ -14,10 +14,7 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.increment([cloum], post, by);
 
-  ctx.body = {
-    code: 0,
-    data: data
-  };
+  return ctx.return(0, '', data);
 
 });
 

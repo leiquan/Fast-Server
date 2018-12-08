@@ -13,12 +13,9 @@ router.post('/', async function (ctx, next) {
   let page = get.page ? parseInt(get.page) : null;
   let pageSize = get.pageSize ? parseInt(get.pageSize) : null;
 
-  let data = await dao.list(post, include);
+  let data = await dao.list(post);
 
-  ctx.body = {
-    code: 0,
-    data: data
-  };
+  return ctx.return(0, '', data);
 
 });
 

@@ -13,10 +13,7 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.list(post);
 
-  ctx.body = {
-    code: 0,
-    data: data
-  };
+  return ctx.return(0, '', data);
 
 });
 

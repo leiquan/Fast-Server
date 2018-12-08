@@ -12,11 +12,7 @@ router.post('/', async function (ctx, next) {
   let post = ctx.request.body;
 
   if (!post.password) {
-    ctx.body = {
-      code: 1,
-      data: '密码不能为空'
-    };
-    return;
+    return ctx.return(1, '密码不能为空', null);
   }
 
   let data = await dao.update({
@@ -25,10 +21,7 @@ router.post('/', async function (ctx, next) {
       id: ctx.session.user.id
     });
 
-  ctx.body = {
-    code: 0,
-    data: '密码修改成功！'
-  };
+  return ctx.return(0, '密码修改成功！', data);
 
 
 });

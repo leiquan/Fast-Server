@@ -39,6 +39,15 @@ app.proxy = true;
 // session key，签名的时候需要用到
 app.keys = ['I am a session key! My random number is 6291619!'];
 
+// 这里是统一进行错误相应的代码，正常情况建议使用 ctx.body 返回，错误情况用这个来返回
+app.context.return = function (code = -1, message = '', data = null) {
+  return this.body = {
+    code,
+    message,
+    data
+  }
+}
+
 // 使用 Redis 存储 session，到期 Redis 自动删除
 app.use(session({
   key: 'SSID',

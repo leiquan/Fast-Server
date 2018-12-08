@@ -20,26 +20,21 @@ router.post('/', async function (ctx, next) {
   });
 
   if (res_user.count > 0) {
-    code = 0;
-    msg = '登录成功';
 
     ctx.session.user = {
       id: res_user.rows[0].id,
       username: res_user.rows[0].username,
       phone: res_user.rows[0].phone
     }
-    
-  } else {
-    code = 1;
-    msg = '账号密码不匹配';
-    ctx.session.user = null;
-  }
 
-  ctx.body = {
-    code,
-    msg,
-    data
-  };
+    return ctx.return(0, '登录成功', null);
+
+  } else {
+
+    ctx.session.user = null;
+
+    return ctx.return(1, '账号密码不匹配', null);
+  }
 
 });
 

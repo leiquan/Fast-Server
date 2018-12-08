@@ -36,20 +36,17 @@ router.post('/', async function (ctx, next) {
     });
 
     if (res.res.statusCode == 200) {
-        ctx.body = {
-            code: 0,
-            data: {
-                upload_name: file.name,
-                name: res.name,
-                cover_url: res.url,
-                url: res.url
-            }
-        }
+
+        return ctx.return(0, '', {
+            upload_name: file.name,
+            name: res.name,
+            cover_url: res.url,
+            url: res.url
+        });
+
     } else {
-        ctx.body = {
-            code: res.res.statusCode,
-            msg: '上传失败，状态码：' + res.res.statusCode
-        }
+
+        return ctx.return(res.res.statusCode, '上传失败，状态码：' + res.res.statusCode, null);
     }
 
 });

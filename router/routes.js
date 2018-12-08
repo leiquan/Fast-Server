@@ -9,7 +9,7 @@ let routes = function (router) {
     '/user/login': './user/login',
     '/user/reg': './user/reg',
     '/user/list': './user/list',
-    '/user/update': './user/list',
+    '/user/update': './user/update',
     '/user/modpwd': './user/modpwd',
 
     // ****** sms 常用接口，短信发送 ******

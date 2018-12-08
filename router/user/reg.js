@@ -17,18 +17,8 @@ router.post('/', async function (ctx, next) {
     let get = ctx.request.query;
     let post = ctx.request.body;
 
-    let code = 0;
-    let msg = '';
-
     if (!post.username || !post.password || !post.phone || !post.verify_code) {
-
-        code = 1;
-        msg = '请检查输入！';
-        ctx.body = {
-            code,
-            msg
-        };
-
+        return ctx.return(1, '请检查输入！');
     } else {
 
         // 验证码是否正确
@@ -36,20 +26,10 @@ router.post('/', async function (ctx, next) {
             phone: post.phone
         });
         if (res_user.count == 0) {
-            code = 2;
-            msg = '手机号不存在';
-            ctx.body = {
-                code,
-                msg
-            };
+            return ctx.return(2, '手机号不存在！');
         } else {
             if (post.verify_code != res_user.rows[0].verify_code) {
-                code = 3;
-                msg = '验证码不正确';
-                ctx.body = {
-                    code,
-                    msg
-                };
+                return ctx.return(3, '验证码不正确！');
             } else {
 
                 let res_reg = await daoUser.update({
@@ -59,11 +39,8 @@ router.post('/', async function (ctx, next) {
                         phone: post.phone
                     });
 
-                msg = '用户注册成功';
-                ctx.body = {
-                    code,
-                    msg
-                };
+                return ctx.return(0, '用户注册成功', res_reg);
+
             }
         }
 
