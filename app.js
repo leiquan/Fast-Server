@@ -50,7 +50,7 @@ app.context.return = function (code = -1, message = '', data = null) {
 }
 
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
-app.context.log = function ( key = 'untitled log', value) {
+app.context.log = function ( key = 'untitled log', value = '') {
   daoLog.add({
     key,
     value
