@@ -286,7 +286,7 @@
 					"response": []
 				},
 				{
-					"name": "模糊搜索书籍",
+					"name": "模糊search书籍",
 					"request": {
 						"method": "POST",
 						"header": [
