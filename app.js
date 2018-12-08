@@ -7,11 +7,18 @@ let cors = require('koa2-cors');
 let xmlParser = require('koa-xml-body');
 var session = require('koa-generic-session');
 var redisStore = require('koa-redis');
+let daoLog = require('./dao/log');
 
 let router = new Router();
 let app = new Koa();
 
-// 引入路由
+// 指定端口
+let port = process.env.PORT || 3000;
+
+// 引入定时任务，注意：引入即生效
+require('./utils/cron/backupDB');
+
+// 引入路由列表
 let routes = require('./router/routes');
 
 // 静态资源路径
@@ -27,25 +34,27 @@ app.use(error);
 let auth = require('./utils/midware/auth');
 app.use(auth);
 
-// 引入定时任务实例，注意，引入即生效
-let cronBackupDB = require('./utils/cron/backupDB');
-
-// 指定端口
-let port = process.env.PORT || 3000;
-
 // 设置 proxy 为 true,那么就可以在请求里拿到实际 IP
 app.proxy = true;
 
 // session key，签名的时候需要用到
 app.keys = ['I am a session key! My random number is 6291619!'];
 
-// 这里是统一进行错误相应的代码，正常情况建议使用 ctx.body 返回，错误情况用这个来返回
+// 挂载在 context 上的快捷方法：return，这里是统一进行错误相应的代码，正常情况建议使用 ctx.body 返回，错误情况用这个来返回
 app.context.return = function (code = -1, message = '', data = null) {
   return this.body = {
     code,
     message,
     data
   }
+}
+
+// 挂载在 context 上的快捷方法：log，可以将日志写入数据库
+app.context.log = function ( key = 'untitled log', value) {
+  daoLog.add({
+    key,
+    value
+});
 }
 
 // 使用 Redis 存储 session，到期 Redis 自动删除

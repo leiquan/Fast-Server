@@ -26,14 +26,11 @@ let errorHandler = async function (ctx, next) {
 
     if (ctx.status == 404) {
 
-        logDao.add({
-            key: '404',
-            value: JSON.stringify({
-                url: ctx.request.url
-            })
-        });
+        ctx.log('404', JSON.stringify({
+            url: ctx.request.url
+        }));
 
-        ctx.body = 'Not Found :(';
+        return ctx.return(404, 'Not Found :(', null);
     }
 
 }

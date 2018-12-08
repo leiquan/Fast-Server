@@ -6,12 +6,12 @@ const globalVariable = {
     status: {
         not_login: {
             code: -1,
-            msg: '未登录!'
+            message: '未登录!'
         },
 
         login_expired: {
             code: -2,
-            msg: '登录过期!'
+            message: '登录过期!'
         },
     }
 
