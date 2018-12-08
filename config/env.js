@@ -2,10 +2,10 @@ let env = {
     dev: {
         mysql: {
             logging: true, // 是否打印数据库查询日志
-            dbname: 'agile_server',
-            username: 'root',
-            password: '930102@My',
-            host: '27.102.114.139',
+            dbname: 'testdb',
+            username: 'testdb',
+            password: 'testdb@18036',
+            host: 'agileloop.mysql.polardb.rds.aliyuncs.com',
             port: 3306,
             baseUrl: 'http://localhost:3002'
         },
@@ -24,13 +24,13 @@ let env = {
     },
     online: {
         mysql: {
-            logging: false,
-            dbname: 'agile_server',
-            username: 'root',
-            password: 'lehui@2018',
-            host: '47.104.137.247',
+            logging: false, // 是否打印数据库查询日志
+            dbname: 'testdb',
+            username: 'testdb',
+            password: 'testdb@18036',
+            host: 'agileloop.mysql.polardb.rds.aliyuncs.com',
             port: 3306,
-            baseUrl: 'https://pay.feimao.shop'
+            baseUrl: 'http://localhost:3002'
         },
         oss: {
             region: 'oss-cn-qingdao',

@@ -12,29 +12,30 @@ const model = sequelize.define(modelName, {
     comment: '自增ID'
   },
 
-  phone: {
-    type: sequelize.Sequelize.BIGINT,
-    comment: '手机号'
+  title: {
+    type: sequelize.Sequelize.STRING(32),
+    comment: '书籍标题'
   },
 
-  verify_code: {
-    type: sequelize.Sequelize.INTEGER,
-    comment: '手机号验证码'
+  author: {
+    type: sequelize.Sequelize.STRING(32),
+    comment: '书籍作者'
   },
 
-  verify_time: {
-    type: sequelize.Sequelize.DATE,
-    comment: '手机号验证码发送时间'
-  },
-
-  username: {
+  description: {
     type: sequelize.Sequelize.TEXT,
-    comment: '用户名'
+    comment: '书籍描述'
   },
 
-  password: {
-    type: sequelize.Sequelize.STRING,
-    comment: '密码'
+  price: {
+    type: sequelize.Sequelize.DECIMAL(5, 2),
+    comment: '书籍价格'
+  },
+
+  sale_count: {
+    type: sequelize.Sequelize.INTEGER,
+    comment: '销售数量',
+    defaultValue: 0
   },
 
   status: {

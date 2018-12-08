@@ -19,7 +19,8 @@ const model = sequelize.define(modelName, {
 
   value: {
     type: sequelize.Sequelize.TEXT,
-    comment: 'log的值'
+    comment: 'log的值',
+    paranoid: true
   }
 
 }, {

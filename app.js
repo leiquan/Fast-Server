@@ -31,7 +31,7 @@ app.use(auth);
 let cronBackupDB = require('./utils/cron/backupDB');
 
 // 指定端口
-let port = process.env.PORT || 4000;
+let port = process.env.PORT || 3000;
 
 // 设置 proxy 为 true,那么就可以在请求里拿到实际 IP
 app.proxy = true;
@@ -51,10 +51,10 @@ app.use(session({
     signed: true
   },
   store: redisStore({
-    host: 'feimao.shop',
+    host: '27.102.114.139',
     port: 6379,
-    auth_pass: '930102@My',
-    db: 1
+    auth_pass: '12345@yhr',
+    db: 0
   })
 }));
 
