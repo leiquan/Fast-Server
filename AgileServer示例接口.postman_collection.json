@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "书籍操作接口",
+			"name": "书籍接口",
 			"item": [
 				{
 					"name": "添加书籍",
@@ -25,17 +25,17 @@
 							"urlencoded": [
 								{
 									"key": "title",
-									"value": "JS 权威指南",
+									"value": "《狂人日记》",
 									"type": "text"
 								},
 								{
-									"key": "author",
-									"value": "雷全",
+									"key": "author_id",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "适合新人的第一本入门书",
+									"value": "鲁迅的代表作",
 									"type": "text"
 								},
 								{
@@ -355,6 +355,396 @@
 							"path": [
 								"book",
 								"increment"
+							]
+						},
+						"description": "列出书籍，默认10条数据，有翻页功能"
+					},
+					"response": []
+				},
+				{
+					"name": "删除书籍",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "JS 权威指南",
+									"type": "text"
+								},
+								{
+									"key": "author",
+									"value": "雷全",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "适合新人的第一本入门书",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "100.50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/book/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户接口",
+			"item": [
+				{
+					"name": "用户登录",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "phone",
+									"value": "18611114365",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户注册",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "18611114365",
+									"type": "text"
+								},
+								{
+									"key": "verify_code",
+									"value": "163112",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/reg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"reg"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "列出书籍，包含作者",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/book/list_include_author",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"list_include_author"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "这里展示用户接口的使用",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1578d7bb-f696-45b3-95ed-8d1fd6d29c5c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f0a1127-9e0e-461f-b169-f72e60804775",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "短信验证码接口",
+			"item": [
+				{
+					"name": "用户发送手机验证码",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "phone",
+									"value": "18611114365",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/sms/verify_code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"sms",
+								"verify_code"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "这里展示验证码接口的使用",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1578d7bb-f696-45b3-95ed-8d1fd6d29c5c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "0f0a1127-9e0e-461f-b169-f72e60804775",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "作者接口",
+			"item": [
+				{
+					"name": "添加作者",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "鲁迅",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "鲁迅（1881年9月25日－1936年10月19日），原名周樟寿，后改名周树人，字豫山，后改豫才，“鲁迅”是他1918年发表《狂人日记》时所用的笔名，也是他影响最为广泛的笔名，浙江绍兴人。",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/author/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"author",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "列出作者",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "鲁迅",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/author/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"author",
+								"list"
+							]
+						},
+						"description": "列出书籍，默认10条数据，有翻页功能"
+					},
+					"response": []
+				},
+				{
+					"name": "模糊search作者",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "鲁",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/author/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"author",
+								"search"
 							]
 						},
 						"description": "列出书籍，默认10条数据，有翻页功能"

@@ -2,8 +2,7 @@ let Sequelize = require('sequelize');
 let path = require('path');
 let env = require('../config/env');
 
-let modelName = path.basename(__filename, '.js');
-let model = require('../models/' + modelName);
+let model = require('../models/' + path.basename(__filename, '.js'));
 
 let dao = {
 

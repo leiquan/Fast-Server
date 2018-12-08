@@ -2,8 +2,7 @@ let Sequelize = require('sequelize');
 let path = require('path');
 let env = require('../config/env');
 
-let modelName = path.basename(__filename, '.js');
-let model = require('../models/' + modelName);
+let model = require('../models/' + path.basename(__filename, '.js'));
 
 let dao = {
 
@@ -34,12 +33,34 @@ let dao = {
         return data;
     },
 
-    list: async function (whereJson = {}, page = 1, pageSize = 10) {
+    list: async function (whereJson = {}, include = [], page = 1, pageSize = 10) {
         let data = await model.findAndCountAll({
             logging: env.logging,
             where: whereJson,
             offset: pageSize * (page - 1),
-            limit: pageSize
+            limit: pageSize,
+            include
+        });
+        return data;
+    },
+
+    // 关联查询，请仔细研究这里的写法
+    list_include_author: async function (whereJson = {}, include = [], page = 1, pageSize = 10) {
+        let data = await model.findAndCountAll({
+            logging: env.logging,
+            where: whereJson,
+            offset: pageSize * (page - 1),
+            limit: pageSize,
+            include: [
+                {
+                    association: model.hasOne(require('../models/author'),
+                        {
+                            foreignKey: 'id',
+                            targetKey: 'author_id'
+                        }),
+                    attributes: ['id', 'name', 'description']
+                },
+            ]
         });
         return data;
     },

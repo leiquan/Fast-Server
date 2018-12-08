@@ -2,8 +2,7 @@ let path = require('path');
 let router = require('koa-router')();
 let Sequelize = require('sequelize');
 
-let daoName = path.basename(__dirname);
-let dao = require('../../dao/' + daoName);
+let dao = require('../../dao/' + path.basename(__dirname));
 
 let daoUser = require('../../dao/user');
 let trimPost = require('../../utils/routerPre/trimPost');

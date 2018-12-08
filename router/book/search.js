@@ -3,8 +3,7 @@ let router = require('koa-router')();
 let Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-let daoName = path.basename(__dirname);
-let dao = require('../../dao/' + daoName);
+let dao = require('../../dao/' + path.basename(__dirname));
 
 router.post('/', async function (ctx, next) {
 
