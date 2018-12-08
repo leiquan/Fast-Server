@@ -116,7 +116,17 @@
 								"type": "text"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "t",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
 						"url": {
 							"raw": "http://localhost:3000/book/list?page=2",
 							"protocol": "http",
