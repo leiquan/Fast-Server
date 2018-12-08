@@ -1,14 +1,14 @@
 {
   "name": "agile-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "敏捷无限技术部通用的 、快速开发的、性能强劲的、功能齐全的 node 服务器解决方案。",
+  "main": "app.js",
   "scripts": {
     "start": "./node_modules/.bin/cross-env NODE_ENV=develop ./node_modules/.bin/nodemon app.js",
     "pm2": "pm2 start app.js --watch -i max"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "leiquan",
+  "license": "MIT",
   "dependencies": {
     "@alicloud/sms-sdk": "^1.1.1",
     "ali-oss": "^5.2.0",
