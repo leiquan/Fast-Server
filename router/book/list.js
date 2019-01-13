@@ -12,6 +12,8 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.list(post, page, pageSize);
 
+  global.event.emit('some_event', '我是测试数据'); 
+
   return ctx.return(0, '', data);
 
 });

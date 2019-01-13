@@ -19,7 +19,7 @@ let env = {
             accessKeyId: 'LTAIylL1Od2ZnZzi',
             secretAccessKey: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
             TemplateCode: 'SMS_134321227',
-            SignName: '肥猫优生活'
+            SignName: '测试签名'
         },
         redis: {
             port: 6379,
@@ -49,7 +49,7 @@ let env = {
             accessKeyId: 'LTAIylL1Od2ZnZzi',
             secretAccessKey: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
             TemplateCode: 'SMS_134321227',
-            SignName: '肥猫优生活'
+            SignName: '测试签名'
         },
         redis: {
             port: 6379,

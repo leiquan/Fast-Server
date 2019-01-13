@@ -5,20 +5,62 @@ let Router = require('koa-router');
 let body = require('koa-body');
 let cors = require('koa2-cors');
 let xmlParser = require('koa-xml-body');
-var session = require('koa-generic-session');
-var redisStore = require('koa-redis');
+let session = require('koa-generic-session');
+let redisStore = require('koa-redis');
 let daoLog = require('./dao/log');
 let env = require('./config/env');
 let redis = require('./config/redis');
+let kue = require('kue');
 
 let router = new Router();
 let app = new Koa();
+
+
+// 事件
+let EventEmitter = require('events').EventEmitter; 
+global.event = new EventEmitter(); 
+
+require('./utils/event/index');
+
+
+// 消息队列
+let queue = kue.createQueue({
+  prefix: 'queue',
+  redis: {
+    port: env.redis.port,
+    host: env.redis.host,
+    auth: env.redis.password,
+    db: 3,
+    options: {}
+  }
+});
+
+queue.process('email', function(job, done){
+ console.log("正在处理队列任务: " + job.id + "...");
+ setTimeout(function(){
+  done();
+ }, 1000);
+});
+
+queue.on('job enqueue', function(id, type){
+  console.log( '任务 %s 已经加入队列, %s', id, type );
+}).on('job complete', function(id, result){
+  kue.Job.get(id, function(err, job){
+    if (err) return;
+    job.remove(function(err){
+      if (err) throw err;
+      console.log('队列任务已经完成并移除: %d', job.id);
+    });
+  });
+});
+
 
 // 指定端口
 let port = process.env.PORT || 3000;
 
 // 引入定时任务，注意：引入即生效
-require('./utils/cron/backupDB');
+require('./utils/schedule/backupDB');
+require('./utils/schedule/todo');
 
 // 引入路由列表
 let routes = require('./router/routes');
@@ -110,13 +152,13 @@ console.log('服务器正在监听端口：' + port);
 
 
 // 是否强制使用 HTTPS
-// var https = require('https');
-// var enforceHttps = require('koa-sslify');
+// let https = require('https');
+// let enforceHttps = require('koa-sslify');
 // app.use(enforceHttps());
 
 // 另外HTTP 和 HTTPS可以同时监听
 // 秘钥文件由 Let's Enycript 生成
-// var options = {
+// let options = {
 //   key: fs.readFileSync('/Users/leiquan/key/privkey.pem'),
 //   cert: fs.readFileSync('/Users/leiquan/key/cert.pem')
 // };
