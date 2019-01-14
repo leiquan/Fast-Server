@@ -1,4 +1,4 @@
-let env = require('../config/env');
+let env = require('../../config/env');
 let kue = require('kue');
 
 let queue = kue.createQueue({
@@ -14,11 +14,10 @@ let queue = kue.createQueue({
 
 for (let i = 0; i < 100; i++) {
     let job = queue.create('email', {
-        title: 'welcome email for tj',
-        to: 'tj@learnboost.com',
-        template: 'welcome-email',
+        title: 'test email',
+        to: 'test@test.com',
+        content: 'code 1234',
         time: new Date()
-
     }).save(function (err) {
         if (!err) console.log(job.id);
     });
