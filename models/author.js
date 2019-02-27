@@ -22,7 +22,10 @@ const model = sequelize.define(modelName, {
     comment: '作者描述'
   },
 
-
+  sale_count: {
+    type: sequelize.Sequelize.INTEGER,
+    comment: '作者售卖的书籍数量'
+  }
   
 }, {
     underscored: true,

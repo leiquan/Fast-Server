@@ -1,4 +1,5 @@
 let Sequelize = require('sequelize');
+let sequelize = require('../config/sequelize');
 let path = require('path');
 let env = require('../config/env');
 
@@ -92,7 +93,30 @@ let dao = {
             ]
         });
         return data;
-    }
+    },
+
+    // 测试事务
+    sale_an_author_book: async function (author_id) {
+
+        sequelize.transaction(function () {
+
+            let book = model;
+            let author = require('../models/author');
+
+            return Promise.all([
+                book.increment('sale_count', { where: { author_id } }),
+                author.increment('sale_count', { where: { id: author_id } })
+            ]).then(function (result) {
+                // 提交事务
+            }).catch(function (error) {
+                // 回滚事务
+            });
+
+        });
+
+    },
+
+
 }
 
 
