@@ -2,7 +2,7 @@
 
 ##### A simply, fast, completely Node.js server solution, based on KOA.
 
-简单快速的 、性能强劲的、功能齐全的 node 服务器解决方案合集。 
+简单快速的 、性能强劲的、功能齐全的 node 服务器解决方案合集，基于 KOA。 
 
 
 本项目涵盖的常用功能或规范有：
