@@ -110,23 +110,19 @@ let dao = {
                     await book.increment('sale_count', { where: { author_id } }),
                     await author.increment('sale_count', { where: { id: author_id } })
 
-                ]).then(function (result) {
+                ]).then(function () {
                     // 提交事务
                     resolve('success');
-                }).catch(function (error) {
-                    // 回滚事务
-                    resolve('failed');
                 });
 
+            }).catch(function () {
+                // 回滚事务
+                resolve('failed');
             });
-
 
         });
 
-
-
     },
-
 
 }
 
