@@ -95,21 +95,21 @@ let dao = {
         return data;
     },
 
-    // 测试事务
+    // 事务
     sale_an_author_book: async function (author_id) {
 
-        sequelize.transaction(function () {
+        sequelize.transaction(async function () {
 
             let book = model;
             let author = require('../models/author');
 
-            return Promise.all([
-                book.increment('sale_count', { where: { author_id } }),
-                author.increment('sale_count', { where: { id: author_id } })
+            Promise.all([
+                await book.increment('sale_count', { where: { author_id } }),
+                await author.increment('sale_count', { where: { id: author_id } })
             ]).then(function (result) {
-                // 提交事务
+                console.log('提交事务');
             }).catch(function (error) {
-                // 回滚事务
+                console.log('回滚事务');
             });
 
         });

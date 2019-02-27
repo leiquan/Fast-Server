@@ -13,9 +13,7 @@ router.post('/', async function (ctx, next) {
   let page = get.page;
   let pageSize = get.pageSize;
 
-  let data = await dao.sale_an_author_book(post.author_id);
-
-  console.log(data);
+  let data =  await dao.sale_an_author_book(post.author_id);
 
   return ctx.return(0, '', data);
 
