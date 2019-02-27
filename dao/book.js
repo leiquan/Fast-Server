@@ -98,21 +98,32 @@ let dao = {
     // 事务
     sale_an_author_book: async function (author_id) {
 
-        sequelize.transaction(async function () {
+        let book = model;
+        let author = require('../models/author');
 
-            let book = model;
-            let author = require('../models/author');
+        return new Promise(async (resolve, reject) => {
 
-            Promise.all([
-                await book.increment('sale_count', { where: { author_id } }),
-                await author.increment('sale_count', { where: { id: author_id } })
-            ]).then(function (result) {
-                console.log('提交事务');
-            }).catch(function (error) {
-                console.log('回滚事务');
+            sequelize.transaction(async function () {
+
+                Promise.all([
+
+                    await book.increment('sale_count', { where: { author_id } }),
+                    await author.increment('sale_count', { where: { id: author_id } })
+
+                ]).then(function (result) {
+                    // 提交事务
+                    resolve('success');
+                }).catch(function (error) {
+                    // 回滚事务
+                    resolve('failed');
+                });
+
             });
 
+
         });
+
+
 
     },
 
