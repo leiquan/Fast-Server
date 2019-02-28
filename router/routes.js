@@ -40,7 +40,12 @@ let routes = function (router) {
     '/author/add': './author/add',
     '/author/list': './author/list',
     '/author/search': './author/search',
-    '/author/list_include_books': './author/list_include_books'
+    '/author/list_include_books': './author/list_include_books',
+
+    // review
+    '/review/add': './review/add',
+    '/review/list': './review/list',
+    '/review/search': './review/search'
 
   };
   for (x in controller) {
