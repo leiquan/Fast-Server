@@ -6,6 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/cross-env NODE_ENV=develop ./node_modules/.bin/nodemon app.js",
     "pm2": "pm2 start app.js --watch -i max",
+    "restart": "pm2 restart app.js",
     "test": "./node_modules/mocha/bin/mocha"
   },
   "author": "leiquan",
