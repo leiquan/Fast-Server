@@ -14,7 +14,11 @@ router.post('/', async function (ctx, next) {
 
   global.event.emit('some_event', '我是测试数据'); 
 
-  return ctx.return(0, '', data);
+  ctx.body = {
+    code: 0,
+    msg: '',
+    data: data
+  };
 
 });
 

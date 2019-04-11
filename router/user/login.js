@@ -23,13 +23,21 @@ router.post('/', async function (ctx, next) {
       phone: res_user.rows[0].phone
     }
 
-    return ctx.return(0, '登录成功', null);
+    ctx.body = {
+      code: 0 ,
+      msg: '登录成功',
+      data: null
+    };
 
   } else {
 
     ctx.session.user = null;
 
-    return ctx.return(1, '账号密码不匹配', null);
+    ctx.body = {
+      code: 1,
+      msg: '账号密码不匹配',
+      data: null
+    };
   }
 
 });

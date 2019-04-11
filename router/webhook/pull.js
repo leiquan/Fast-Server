@@ -27,7 +27,11 @@ router.get('/', async function (ctx, next) {
 
   let res = await run();
 
-  return ctx.return(0, 'webhook正常执行！', res);
+  ctx.body = {
+    code: 0,
+    msg: 'webhook正常执行！',
+    data: res
+  };
 
 });
 

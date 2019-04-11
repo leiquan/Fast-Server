@@ -16,7 +16,11 @@ router.get('/', async function (ctx, next) {
         // create data.sql file;
     })
 
-    return ctx.return(0, '数据库备份成功', null);
+    ctx.body = {
+        code: 0,
+        msg: '数据库备份成功',
+        data: null
+    };
 
 });
 

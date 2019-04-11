@@ -11,7 +11,11 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.list(post);
 
-  return ctx.return(0, '', data);
+  ctx.body = {
+    code: 0,
+    msg: '',
+    data: data
+  };
 
 });
 

@@ -88,15 +88,6 @@ app.proxy = true;
 // session key，签名的时候需要用到
 app.keys = ['I am a session key! My random number is 6291619!'];
 
-// 挂载在 context 上的快捷方法：return，这里是统一进行错误相应的代码，正常情况建议使用 ctx.body 返回，错误情况用这个来返回
-app.context.return = function (code = -1, message = '', data = null) {
-  return this.body = {
-    code,
-    message,
-    data
-  }
-}
-
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
 app.context.log = function (key = 'untitled log', value = '') {
   daoLog.add({

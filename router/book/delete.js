@@ -10,7 +10,11 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.delete(get.id);
 
-  return ctx.return(0, '', data);
+  ctx.body = {
+    code: 0,
+    msg: '',
+    data: data
+  };
 
 });
 

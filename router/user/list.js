@@ -12,7 +12,11 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.list(post, page, pageSize);
 
-  return ctx.return(0, '', data);
+  ctx.body = {
+    code: 0 ,
+    msg: '验证码发送成功',
+    data: data
+  };
 
 });
 

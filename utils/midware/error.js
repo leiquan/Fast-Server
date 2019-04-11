@@ -21,7 +21,11 @@ let errorHandler = async function (ctx, next) {
 
         ctx.status = 500;
 
-        return ctx.return(500, error.toString(), null);
+        ctx.body = {
+            code: 500,
+            msg: error.toString(),
+            data: null
+        };
 
     }
 
@@ -29,7 +33,11 @@ let errorHandler = async function (ctx, next) {
 
         ctx.log('404', ip + '; ' + ctx.request.url);
 
-        return ctx.return(404, 'Not Found :(', null);
+        ctx.body = {
+            code: 404,
+            msg: 'Not Found :(',
+            data: null
+        };
     }
 
 }

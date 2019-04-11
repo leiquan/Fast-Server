@@ -15,7 +15,11 @@ router.post('/', async function (ctx, next) {
 
   let data =  await dao.sale_an_author_book(post.author_id);
 
-  return ctx.return(0, data, null);
+  ctx.body = {
+    code: 0,
+    msg: '',
+    data: data
+  };
 
 });
 
