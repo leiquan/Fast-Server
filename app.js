@@ -11,6 +11,7 @@ let daoLog = require('./dao/log');
 let env = require('./config/env');
 let redis = require('./config/redis');
 let kue = require('kue');
+let views = require('koa-views');
 
 let router = new Router();
 let app = new Koa();
@@ -69,6 +70,9 @@ let routes = require('./router/routes');
 // let static = require('koa-static');
 // 其实开发接口并不需要 static，但是可能会上传一些文件什么的
 // app.use(static(__dirname + '/public'));
+
+// 如果需要模板惊醒服务端渲染
+app.use(views(__dirname + '/views', {extension: 'ejs'}));
 
 // 引入自定义的错误处理中间件，使用自定义 404、500 处理插件
 let error = require('./utils/midware/error');

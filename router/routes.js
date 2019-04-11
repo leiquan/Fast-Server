@@ -39,7 +39,10 @@ let routes = function (router) {
     '/author/add': './author/add',
     '/author/list': './author/list',
     '/author/search': './author/search',
-    '/author/list_include_books': './author/list_include_books'
+    '/author/list_include_books': './author/list_include_books',
+
+    // 以下为服务端渲染的 view 的路由
+    '/welcome': './__views/welcome'
 
   };
   for (x in controller) {
