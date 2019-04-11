@@ -1,7 +1,7 @@
 {
   "name": "agile-server",
   "version": "1.0.0",
-  "description": "一套通用的 、快速开发的、性能强劲的、功能齐全的 node 服务器解决方案。",
+  "description": "一套通用的、快速开发的、性能强劲的、功能齐全的 node 服务器解决方案。",
   "main": "app.js",
   "scripts": {
     "start": "./node_modules/.bin/cross-env NODE_ENV=develop ./node_modules/.bin/nodemon app.js",
