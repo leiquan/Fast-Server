@@ -60,8 +60,8 @@ queue.on('job enqueue', function(id, type){
 let port = process.env.PORT || 3000;
 
 // 引入定时任务，注意：引入即生效
-require('./utils/schedule/backupDB');
-require('./utils/schedule/todo');
+// require('./utils/schedule/backupDB');
+// require('./utils/schedule/todo');
 
 // 引入路由列表
 let routes = require('./router/routes');

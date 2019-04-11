@@ -8,7 +8,7 @@ router.get('/', async function (ctx, next) {
   let post = ctx.request.body;
 
   ctx.state = {
-    hello: 'world'
+    hello: 'world，我是一个来自路由的参数'
   };
 
   await ctx.render('welcome');

@@ -12,19 +12,19 @@ const model = sequelize.define(modelName, {
     comment: '自增ID'
   },
 
-  name: {
-    type: sequelize.Sequelize.STRING(32),
-    comment: '作者姓名'
-  },
-
-  description: {
+  content: {
     type: sequelize.Sequelize.TEXT,
-    comment: '作者描述'
+    comment: '评论内容'
   },
 
-  sale_count: {
+  user_id: {
     type: sequelize.Sequelize.INTEGER,
-    comment: '作者售卖的书籍数量'
+    comment: '评论者ID'
+  },
+
+  article_id: {
+    type: sequelize.Sequelize.INTEGER,
+    comment: '评论文章ID'
   }
   
 }, {
