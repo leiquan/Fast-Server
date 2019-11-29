@@ -4,7 +4,7 @@ let env = require('../config/env');
 
 module.exports = function (model) {
 
-    // 这里是自定义Dao方法
+    // 这里是公用的Dao方法
     return {
 
         add: async function (addJson) {
@@ -34,15 +34,15 @@ module.exports = function (model) {
             return data;
         },
 
-        // list: async function (whereJson = {}, page = 1, pageSize = 10) {
-        //     let data = await model.findAndCountAll({
-        //         logging: env.logging,
-        //         where: whereJson,
-        //         offset: pageSize * (page - 1),
-        //         limit: pageSize
-        //     });
-        //     return data;
-        // },
+        list: async function (whereJson = {}, page = 1, pageSize = 10) {
+            let data = await model.findAndCountAll({
+                logging: env.logging,
+                where: whereJson,
+                offset: pageSize * (page - 1),
+                limit: pageSize
+            });
+            return data;
+        },
 
         all: async function (whereJson = {}) {
             let data = await model.findAndCountAll({
