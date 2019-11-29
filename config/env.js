@@ -16,16 +16,16 @@ let env = {
             bucket: 'feimao-shop'
         },
         sms: {
-            accessKeyId: 'LTAIylL1Od2ZnZzi',
-            secretAccessKey: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
-            TemplateCode: 'SMS_134321227',
-            SignName: '测试签名'
+            accessKeyId: 'rjrswjdaMcMbTvHD',
+            secretAccessKey: 'I24NeyUuq9twk8YhUUkGjzjJpLEZOw',
+            TemplateCode: 'SMS_142384645',
+            SignName: '敏捷无限'
         },
         redis: {
             port: 6379,
-            host: '27.102.114.139',
+            host: '47.95.228.14',
             family: 4,
-            password: '12345@yhr',
+            password: '930102@redis',
             db: 1
         }
     },
@@ -49,7 +49,7 @@ let env = {
             accessKeyId: 'LTAIylL1Od2ZnZzi',
             secretAccessKey: '1MOktTyLwFI6qxbIChjYpOCJNb3MUQ',
             TemplateCode: 'SMS_134321227',
-            SignName: '测试签名'
+            SignName: '敏捷无限'
         },
         redis: {
             port: 6379,

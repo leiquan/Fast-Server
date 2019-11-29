@@ -64,7 +64,7 @@ router.post("/", async function (ctx, next) {
   ctx.body = {
     code: 0 ,
     msg: '验证码发送成功',
-    data: data
+    data: ''
   };
 
 });
