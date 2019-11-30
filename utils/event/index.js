@@ -1,7 +1,9 @@
+let event = require("./__event");
+
 let e = function () {
 
-    global.event.on('some_event', function (data) {
-        console.log('打印事件：' + data);
+    event.on('some_event', function (data) {
+        console.log('打印测试事件：' + data);
     });
     
 }

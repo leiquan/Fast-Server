@@ -5,7 +5,7 @@ let Sequelize = require('sequelize');
 let dao = require('../../dao/' + path.basename(__dirname));
 
 let daoUser = require('../../dao/user');
-let trimPost = require('../../utils/routerPre/trimPost');
+let trimPost = require('../../utils/Interceptor/trimPost');
 let md5 = require('../../utils/lib/md5');
 
 // 用户注册逻辑

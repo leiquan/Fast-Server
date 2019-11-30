@@ -6,7 +6,7 @@ let routes = function (router) {
   let controller = {
 
     //  ****** 以下为服务端渲染的 view 的路由 ******
-    '/welcome': './__views/welcome',
+    '/welcome': './__view/welcome',
 
     // ****** user 常用接口，登录，注册，查询，更新资料，修改密码 ******
     '/user/login': './user/login',

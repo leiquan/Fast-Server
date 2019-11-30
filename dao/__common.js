@@ -4,7 +4,7 @@ let env = require('../config/env');
 
 module.exports = function (model) {
 
-    // 这里是公用的Dao方法
+    // 这里是公用的dao方法
     return {
 
         add: async function (addJson) {

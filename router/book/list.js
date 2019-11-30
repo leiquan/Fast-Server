@@ -1,5 +1,7 @@
 let path = require('path');
 let router = require('koa-router')();
+let event = require('../../utils/event/__event');
+
 
 let dao = require('../../dao/' + path.basename(__dirname));
 
@@ -12,7 +14,7 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.list(post, page, pageSize);
 
-  global.event.emit('some_event', '我是测试数据'); 
+  event.emit('some_event', '我是测试数据'); 
 
   ctx.body = {
     code: 0,
