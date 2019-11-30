@@ -6,38 +6,37 @@ let env = require('./config/env');
 let router = new Router();
 let app = new Koa();
 
+// session key，签名用
+app.keys = ['I am a session key! My random number is 6291619!'];
 
 // 引入路由列表
 let routes = require('./router/routes');
 
-// 事件响应列表
+// 事件监听注册列表
 require('./utils/event/__list');
 
-// 消息队列处理列表
+// 消息队列注册列表
 require('./utils/queue/__list');
 
-// 引入定时任务列表
+// 定时任务处理列表
 // require('./utils/schedule/backupDB');
 // require('./utils/schedule/todo');
 
-// 静态资源路径，其实开发接口并不需要 static，但是可能会上传一些文件什么的
+// 静态资源路径，开发接口并不需要 static，但是可能会上传文件
 // let static = require('koa-static');
 // app.use(static(__dirname + '/public'));
 
-// 如果需要模板惊醒服务端渲染
+// 如果需要服务端渲染页面模板
 let views = require('koa-views');
 app.use(views(__dirname + '/views', { extension: 'ejs' }));
 
-// 引入自定义的错误处理中间件，使用自定义 404、500 处理插件
+// 引入自定义的错误处理中间件，处理 404、500
 let error = require('./utils/midware/error');
 app.use(error);
 
-// 引入自定义的用户认证中间件
+// 引入自定义的用户认证中间件，处理需要鉴权的用户列表
 let auth = require('./utils/midware/auth');
 app.use(auth);
-
-// session key，签名的时候需要用到
-app.keys = ['I am a session key! My random number is 6291619!'];
 
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
 app.context.log = function (key = 'untitled log', value = '') {
@@ -47,7 +46,7 @@ app.context.log = function (key = 'untitled log', value = '') {
   });
 }
 
-// 使用 Redis 存储 session，到期 Redis 自动删除
+// 使用 Redis 存储 session，到期 Redis 自动删除，这里需要简化一下，移到config里面去
 let session = require('koa-generic-session');
 let redisStore = require('koa-redis');
 app.use(session({
@@ -68,13 +67,13 @@ app.use(session({
   })
 }));
 
-// xml 解析的支持
-let xmlParser = require('koa-xml-body');
-app.use(xmlParser());
-app.use(function (ctx, next) {
-  ctx.xml = ctx.request.body
-  return next()
-});
+// xml 解析的支持，并且挂载到cxt上，处理微信公众号等需要用到
+// let xmlParser = require('koa-xml-body');
+// app.use(xmlParser());
+// app.use(function (ctx, next) {
+//   ctx.xml = ctx.request.body
+//   return next()
+// });
 
 // 文件上传的支持
 let body = require('koa-body');
