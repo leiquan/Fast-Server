@@ -1,8 +1,5 @@
 let Koa = require('koa');
 let Router = require('koa-router');
-let cors = require('koa2-cors');
-let daoLog = require('./dao/log');
-let env = require('./config/env');
 let router = new Router();
 let app = new Koa();
 
@@ -38,6 +35,7 @@ let auth = require('./utils/midware/auth');
 app.use(auth);
 
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
+let daoLog = require('./dao/log');
 app.context.log = function (key = 'untitled log', value = '') {
   daoLog.add({
     key,
@@ -49,6 +47,10 @@ app.context.log = function (key = 'untitled log', value = '') {
 let session = require('koa-generic-session');
 app.use(session(require('./config/session')));
 
+// 文件上传的支持
+let body = require('koa-body');
+app.use(body({ multipart: true }));
+
 // xml 解析的支持，并且挂载到cxt上，处理微信公众号等需要用到
 let xmlParser = require('koa-xml-body');
 app.use(xmlParser());
@@ -57,11 +59,8 @@ app.use(function (ctx, next) {
   return next()
 });
 
-// 文件上传的支持
-let body = require('koa-body');
-app.use(body({ multipart: true }));
-
 // 跨域控制的支持
+let cors = require('koa2-cors');
 app.use(cors({
   origin: function (ctx) {
     return '*'; // 允许来自所有域名请求,上线后请注意配置
