@@ -11,6 +11,8 @@ module.exports = function(server) {
   socket.on("connection", client => {
     allClients.push(client);
 
+    // 需要建立用户的id与会话id的联系，后续需要使用
+
     client.on("disconnect", reason => {
       var index = allClients.indexOf(client);
       allClients.splice(index, 1);
@@ -22,8 +24,20 @@ module.exports = function(server) {
     });
 
     // 私发消息，这里要一对一的发，确定接收人的socket id，然后转发
-    // client.on("chat message", function(msg) {
-    //   var index = allClients.indexOf(client);
-    // });
+    client.on("chat message", function(msg) {
+      var index = allClients.indexOf(client);
+    });
+
+    socket.on("sayTo", function(data) {
+      // 这里的id，是用户的id，要和会话池建立一对一联系
+      // {
+      //   to_id,
+      //   msg
+      // }
+      var toId = data.to_id;
+      let toSocket = ""; // 通过会话池根据id找到目标socket
+
+      toSocket.emit("message", data.msg);
+    });
   });
 };
