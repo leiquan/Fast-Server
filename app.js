@@ -47,32 +47,15 @@ app.context.log = function (key = 'untitled log', value = '') {
 
 // 使用 Redis 存储 session，到期 Redis 自动删除，这里需要简化一下，移到config里面去
 let session = require('koa-generic-session');
-let redisStore = require('koa-redis');
-app.use(session({
-  key: 'SSID',
-  rolling: true,
-  cookie: {
-    path: '/',
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000,  //cookie 有效期1天，默认为 session 的 ttl
-    overwrite: true,
-    signed: true
-  },
-  store: redisStore({
-    host: env.redis.host,
-    port: env.redis.port,
-    auth_pass: env.redis.password,
-    db: 0, // session 放在 db0,log 放在 db1
-  })
-}));
+app.use(session(require('./config/session')));
 
 // xml 解析的支持，并且挂载到cxt上，处理微信公众号等需要用到
-// let xmlParser = require('koa-xml-body');
-// app.use(xmlParser());
-// app.use(function (ctx, next) {
-//   ctx.xml = ctx.request.body
-//   return next()
-// });
+let xmlParser = require('koa-xml-body');
+app.use(xmlParser());
+app.use(function (ctx, next) {
+  ctx.xml = ctx.request.body
+  return next()
+});
 
 // 文件上传的支持
 let body = require('koa-body');
