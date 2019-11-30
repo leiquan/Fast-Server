@@ -71,8 +71,8 @@
 
     -- config 配置文件
         -- env 环境变量配置
-        -- globalVariable 全局变量统一配置
-        -- loginAuth 需要登录的 URL 的配置，会在请求的时候进行过滤
+        -- enums 全局变量统一配置
+        -- login 需要登录的 URL 的配置，会在请求的时候进行过滤
         -- sequelize MySQL 数据库配置
 
     -- dao 数据操作方法，自带有基本方法，可自定义方法，完整方法请参考 book

@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-
 const { mysql } = require('./env');
 
 const sequelize = new Sequelize(mysql.dbname, mysql.username, mysql.password, {
