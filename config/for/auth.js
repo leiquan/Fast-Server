@@ -1,4 +1,5 @@
 
+// 配合 utils/midware/auth 使用
 // 查看 url 是否在 authConfig 里面，是则检验，否则就放行
 const needLoginUrl = [
     '/info/list',
