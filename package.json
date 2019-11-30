@@ -40,7 +40,7 @@
     "pm2": "^2.7.2",
     "qr-image": "^3.2.0",
     "request": "^2.83.0",
-    "sequelize": "^4.22.5",
+    "sequelize": "^5.15.1",
     "should": "^13.2.3",
     "socket.io": "^2.3.0",
     "supertest": "^3.3.0",
