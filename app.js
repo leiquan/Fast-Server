@@ -19,8 +19,7 @@ require('./utils/event/__list');
 require('./utils/queue/__list');
 
 // 定时任务处理列表
-// require('./utils/schedule/backupDB');
-// require('./utils/schedule/todo');
+require('./utils/schedule/__list');
 
 // 静态资源路径，开发接口并不需要 static，但是可能会上传文件
 // let static = require('koa-static');
