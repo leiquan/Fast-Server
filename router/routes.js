@@ -22,7 +22,7 @@ let routes = function (router) {
     '/file/upload_oss': './file/upload_oss',
 
     // ****** utils 常用接口，数据库备份 ******
-    '/utils/db_backup': './utils/db_backup',
+    '/op/db_backup': './op/db_backup',
 
     // ****** book 以下为8个标准接口，增删改查，自增、计数、求和、模糊搜索，以下接口绝大部分可以完全复用或者稍作修改后复用 ******
     '/book/add': './book/add',
