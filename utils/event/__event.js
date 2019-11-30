@@ -1,3 +1,4 @@
-let EventBus = global.event;
+let EventEmitter = require('events').EventEmitter; 
+let EventBus = new EventEmitter();
 
 module.exports = EventBus;

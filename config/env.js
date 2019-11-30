@@ -53,9 +53,9 @@ let env = {
         },
         redis: {
             port: 6379,
-            host: '27.102.114.139',
+            host: '47.95.228.14',
             family: 4,
-            password: '12345@yhr',
+            password: '930102@redis',
             db: 1
         }
     }

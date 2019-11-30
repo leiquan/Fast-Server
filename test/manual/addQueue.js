@@ -12,6 +12,7 @@ let queue = kue.createQueue({
     }
 });
 
+// 模拟瞬间大批量业务进入系统
 for (let i = 0; i < 100; i++) {
     let job = queue.create('email', {
         title: 'test email',

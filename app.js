@@ -1,78 +1,32 @@
-let path = require('path');
-let fs = require('fs');
 let Koa = require('koa');
 let Router = require('koa-router');
-let body = require('koa-body');
 let cors = require('koa2-cors');
-let xmlParser = require('koa-xml-body');
-let session = require('koa-generic-session');
-let redisStore = require('koa-redis');
 let daoLog = require('./dao/log');
 let env = require('./config/env');
-let redis = require('./config/redis');
-let kue = require('kue');
-let views = require('koa-views');
-
 let router = new Router();
 let app = new Koa();
 
 
-// 事件
-let EventEmitter = require('events').EventEmitter; 
-global.event = new EventEmitter(); 
-
-require('./utils/event/index');
-
-
-// 消息队列
-let queue = kue.createQueue({
-  prefix: 'queue',
-  redis: {
-    port: env.redis.port,
-    host: env.redis.host,
-    auth: env.redis.password,
-    db: 3,
-    options: {}
-  }
-});
-
-queue.process('email', function(job, done){
- console.log("正在处理队列任务: " + job.id + "...");
- setTimeout(function(){
-  done();
- }, 1000);
-});
-
-queue.on('job enqueue', function(id, type){
-  console.log( '任务 %s 已经加入队列, %s', id, type );
-}).on('job complete', function(id, result){
-  kue.Job.get(id, function(err, job){
-    if (err) return;
-    job.remove(function(err){
-      if (err) throw err;
-      console.log('队列任务已经完成并移除: %d', job.id);
-    });
-  });
-});
-
-
-// 指定端口
-let port = process.env.PORT || 3000;
-
-// 引入定时任务，注意：引入即生效
-// require('./utils/schedule/backupDB');
-// require('./utils/schedule/todo');
-
 // 引入路由列表
 let routes = require('./router/routes');
 
-// 静态资源路径
+// 事件响应列表
+require('./utils/event/__list');
+
+// 消息队列处理列表
+require('./utils/queue/__list');
+
+// 引入定时任务列表
+// require('./utils/schedule/backupDB');
+// require('./utils/schedule/todo');
+
+// 静态资源路径，其实开发接口并不需要 static，但是可能会上传一些文件什么的
 // let static = require('koa-static');
-// 其实开发接口并不需要 static，但是可能会上传一些文件什么的
 // app.use(static(__dirname + '/public'));
 
 // 如果需要模板惊醒服务端渲染
-app.use(views(__dirname + '/views', {extension: 'ejs'}));
+let views = require('koa-views');
+app.use(views(__dirname + '/views', { extension: 'ejs' }));
 
 // 引入自定义的错误处理中间件，使用自定义 404、500 处理插件
 let error = require('./utils/midware/error');
@@ -81,9 +35,6 @@ app.use(error);
 // 引入自定义的用户认证中间件
 let auth = require('./utils/midware/auth');
 app.use(auth);
-
-// 设置 proxy 为 true,那么就可以在请求里拿到实际 IP
-app.proxy = true;
 
 // session key，签名的时候需要用到
 app.keys = ['I am a session key! My random number is 6291619!'];
@@ -97,6 +48,8 @@ app.context.log = function (key = 'untitled log', value = '') {
 }
 
 // 使用 Redis 存储 session，到期 Redis 自动删除
+let session = require('koa-generic-session');
+let redisStore = require('koa-redis');
 app.use(session({
   key: 'SSID',
   rolling: true,
@@ -116,6 +69,7 @@ app.use(session({
 }));
 
 // xml 解析的支持
+let xmlParser = require('koa-xml-body');
 app.use(xmlParser());
 app.use(function (ctx, next) {
   ctx.xml = ctx.request.body
@@ -123,6 +77,7 @@ app.use(function (ctx, next) {
 });
 
 // 文件上传的支持
+let body = require('koa-body');
 app.use(body({ multipart: true }));
 
 // 跨域控制的支持
@@ -140,18 +95,20 @@ routes(router);
 // 路由注册到 app
 app.use(router.routes()).use(router.allowedMethods());
 
+// 设置 proxy 为 true,那么就可以在请求里拿到实际 IP
+app.proxy = true;
+
 // 直接使用 KOA 来进行端口监听,0.0.0.0 兼容 IPV4 来获取 IP 地址
+let port = process.env.PORT || 3000;
 app.listen(port, '0.0.0.0');
 
 console.log('服务器正在监听端口：' + port);
-
 
 // 是否强制使用 HTTPS
 // let https = require('https');
 // let enforceHttps = require('koa-sslify');
 // app.use(enforceHttps());
 
-// 另外HTTP 和 HTTPS可以同时监听
 // 秘钥文件由 Let's Enycript 生成
 // let options = {
 //   key: fs.readFileSync('/Users/leiquan/key/privkey.pem'),
