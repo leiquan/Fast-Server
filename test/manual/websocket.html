@@ -17,8 +17,13 @@
       var send = document.querySelector("#send");
       var msg = document.querySelector("#msg");
 
-      socket.on("getMsg", data => {
-        console.log("服务端消息：", data);
+      socket.on("id", data => {
+        console.log("我在服务端的ID为：", data);
+        msg.innerHTML = `${data} <br/>`;
+      });
+
+      socket.on("message", data => {
+        console.log("我收到了服务端的消息：", data);
         msg.innerHTML = `${data} <br/>`;
       });
 

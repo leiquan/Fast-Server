@@ -12,32 +12,49 @@ module.exports = function(server) {
     allClients.push(client);
 
     // 需要建立用户的id与会话id的联系，后续需要使用
+    client.emit("id", client.id);
+
+    console.log(
+      "Web Socket新增1个连接：",
+      client.id,
+      "，目前连接数量：",
+      allClients.length
+    );
 
     client.on("disconnect", reason => {
       var index = allClients.indexOf(client);
       allClients.splice(index, 1);
-    });
-
-    // 自定义处理方法，收到了来自客户端的消息
-    client.on("send", data => {
-      console.log(data);
+      console.log(
+        "Web Socket断开1个连接：",
+        client.id,
+        "，理由：",
+        reason,
+        "，目前连接数量：",
+        allClients.length
+      );
     });
 
     // 私发消息，这里要一对一的发，确定接收人的socket id，然后转发
-    client.on("chat message", function(msg) {
-      var index = allClients.indexOf(client);
-    });
+    client.on("send", function(data) {
+      console.log(data);
 
-    socket.on("sayTo", function(data) {
       // 这里的id，是用户的id，要和会话池建立一对一联系
       // {
       //   to_id,
       //   msg
       // }
       var toId = data.to_id;
-      let toSocket = ""; // 通过会话池根据id找到目标socket
 
-      toSocket.emit("message", data.msg);
+      // var index = allClients.indexOf(client);
+
+      let toSocket = allClients[1];
+      // for(let i = 0; i < allClients.length; i++){
+      //   if(allClients[i].id == toId){
+      //     toSocket = allClients[i];
+      //   }
+      // }
+
+      toSocket.emit("message", "test");
     });
   });
 };
