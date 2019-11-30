@@ -12,13 +12,18 @@ module.exports = function(server) {
     allClients.push(client);
 
     client.on("disconnect", reason => {
-      var i = allClients.indexOf(client);
-      allClients.splice(i, 1);
+      var index = allClients.indexOf(client);
+      allClients.splice(index, 1);
     });
 
-    // 自定义处理方法
+    // 自定义处理方法，收到了来自客户端的消息
     client.on("send", data => {
       console.log(data);
     });
+
+    // 私发消息，这里要一对一的发，确定接收人的socket id，然后转发
+    // client.on("chat message", function(msg) {
+    //   var index = allClients.indexOf(client);
+    // });
   });
 };
