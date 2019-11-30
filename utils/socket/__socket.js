@@ -1,24 +1,42 @@
-let socket = require("socket.io");
+let io = require("socket.io");
 
-module.exports = function(server) {
-  let io = socket(server);
+// 用数组保存全部socket会话，以供使用
+var allClients = [];
 
-  io.on("connection", client => {
-    console.log("Web Socket新增1个连接");
+module.exports = function (server) {
+  let socket = io(server);
 
-    client.on("storeClientInfo", function(data) {
-      var clientInfo = new Object();
-      clientInfo.customId = data.customId;
-      clientInfo.clientId = socket.id;
-      console.log(clientInfo);
-    });
+  socket.on("connection", client => {
+    allClients.push(client);
+
+    console.log(
+      "Web Socket新增1个连接：",
+      client.id,
+      "，目前连接数量：",
+      allClients.length
+    );
 
     client.on("send", data => {
       console.log(data);
     });
 
-    client.on("disconnect", client => {
-      console.log("Web Socket断开1个连接");
+    client.on("disconnect", reason => {
+      var i = allClients.indexOf(client);
+      allClients.splice(i, 1);
+      console.log(
+        "Web Socket断开1个连接：",
+        client.id,
+        "，理由：",
+        reason,
+        "，目前连接数量：",
+        allClients.length
+      );
     });
   });
+
+  return {
+    socket,
+    allClients
+  }
+
 };
