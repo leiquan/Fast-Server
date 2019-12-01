@@ -157,3 +157,9 @@
     -- 7.与业务无关的公共方法，应该放在 utils/lib 里面
 
     -- 8.中间件应该采用标准的 KOA 格式，放在 utils/midware 里面
+
+#### 扩展优化
+
+    --1.所有的session应该保存在Redis，服务器上除了代码，不应该放任何文件：上传文件、文件session、日志等，应该提供集中的管理，这样才能够便于扩展集群能力，使用nginx的负载均衡。否则session文件无法同步；
+
+    --2.socket.io扩容的时候，请注意，因为socket虽然不产生文件，没有文件同步问题，但是，他必须绑定IP，因此有IP问题，请参考 https://www.cnblogs.com/zzsdream/p/8403786.html
