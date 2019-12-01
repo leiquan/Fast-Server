@@ -20,8 +20,8 @@ require("./utils/queue/__list");
 require("./utils/schedule/__list");
 
 // 静态资源路径，开发接口并不需要 static，但是可能会上传文件
-// let static = require('koa-static');
-// app.use(static(__dirname + '/public'));
+let static = require('koa-static');
+app.use(static(__dirname + '/public'));
 
 // 如果需要服务端渲染页面模板
 let views = require("koa-views");
