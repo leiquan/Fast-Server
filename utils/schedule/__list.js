@@ -1,4 +1,4 @@
-var schedule = require('node-schedule');
+let schedule = require('node-schedule');
 
 let scheduleList = function () {
 

@@ -1,6 +1,6 @@
 let env = require('./env');
 let redisStore = require('koa-redis');
-var session = {
+let session = {
   key: 'SSID',
   rolling: true,
   cookie: {

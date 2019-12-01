@@ -1,8 +1,8 @@
 let router = require('koa-router')();
-var mysqlDump = require('mysqldump');
+let mysqlDump = require('mysqldump');
 
-var env = require('../../config/env');
-var { timestamp } = require('../../utils/lib/time');
+let env = require('../../config/env');
+let { timestamp } = require('../../utils/lib/time');
 
 router.get('/', async function (ctx, next) {
 

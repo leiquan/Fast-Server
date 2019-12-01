@@ -13,9 +13,9 @@
     </div>
 
     <script>
-      var socket = io("http://localhost:3000");
-      var send = document.querySelector("#send");
-      var msg = document.querySelector("#msg");
+      let socket = io("http://localhost:3000");
+      let send = document.querySelector("#send");
+      let msg = document.querySelector("#msg");
 
       socket.on("id", data => {
         console.log("我在服务端的ID为：", data);

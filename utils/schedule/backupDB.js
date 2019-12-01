@@ -1,6 +1,6 @@
-var schedule = require('node-schedule');
+let schedule = require('node-schedule');
  
-var job = schedule.scheduleJob('* * * * * *', function(){
+let job = schedule.scheduleJob('* * * * * *', function(){
     console.log(new Date())
 });
 

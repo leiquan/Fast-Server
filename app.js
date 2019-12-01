@@ -83,7 +83,7 @@ app.proxy = true;
 
 let port = process.env.PORT || 3000;
 const server = require("http").createServer(app.callback()).listen(port);
-const io = require("./utils/socket/__socket")(server);
+require("./utils/socket/__socket")(server);
 
 // HTTPS配置
 // let options = {

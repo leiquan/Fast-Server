@@ -1,7 +1,7 @@
 let router = require('koa-router')();
-var exec = require('child_process').exec;
+let exec = require('child_process').exec;
 
-var cmdStr = 'git pull';
+let cmdStr = 'git pull';
 
 router.get('/', async function (ctx, next) {
 

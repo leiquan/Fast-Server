@@ -1,6 +1,6 @@
 const supertest = require('supertest');
-var assert = require('assert');
-var should = require('should');
+let assert = require('assert');
+let should = require('should');
 
 let request = supertest('http://localhost:3000');
 

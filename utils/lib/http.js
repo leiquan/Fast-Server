@@ -1,7 +1,7 @@
 let request = require("request");
-var fs = require("fs");
-var https = require("https");
-var path = require("path");
+let fs = require("fs");
+let https = require("https");
+let path = require("path");
 
 let get_url = async function (url) {
   return new Promise((resolve, reject) => {
@@ -50,7 +50,7 @@ let post_raw = async function (url, rawData) {
 let post_https = async function (host, path_url, xml) {
   return new Promise((resolve, reject) => {
     // 请求 https 的配置
-    var options = {
+    let options = {
       host: host,
       port: 443,
       path: path_url,
@@ -71,7 +71,7 @@ let post_https = async function (host, path_url, xml) {
       rejectUnauthorized: true,
       agent: false
     };
-    var req = https.request(options, function (res) {
+    let req = https.request(options, function (res) {
       console.log("HTTPS 校验状态: " + res.connection.authorized);
       res.on("data", function (d) {
         let data = "" + d; // buffer 转字符串

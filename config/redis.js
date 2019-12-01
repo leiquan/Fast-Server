@@ -1,6 +1,6 @@
 let env = require('./env');
-var Redis = require('ioredis');
-var redis = new Redis({
+let Redis = require('ioredis');
+let redis = new Redis({
   port: env.redis.port,
   host: env.redis.host,
   family: env.redis.family,
