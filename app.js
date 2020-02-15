@@ -31,10 +31,6 @@ app.use(views(__dirname + "/views", { extension: "ejs" }));
 let error = require("./utils/midware/error");
 app.use(error);
 
-// 引入自定义的用户认证中间件，处理需要鉴权的用户列表
-let auth = require("./utils/midware/auth");
-app.use(auth);
-
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
 let daoLog = require("./dao/log");
 app.context.log = function(key = "untitled log", value = "") {
@@ -47,6 +43,10 @@ app.context.log = function(key = "untitled log", value = "") {
 // 使用 Redis 存储 session，到期 Redis 自动删除，这里需要简化一下，移到config里面去
 let session = require("koa-generic-session");
 app.use(session(require("./config/session")));
+
+// 引入自定义的用户认证中间件，处理需要鉴权的用户列表
+let auth = require("./utils/midware/auth");
+app.use(auth);
 
 // 文件上传的支持
 let body = require("koa-body");
