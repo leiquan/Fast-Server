@@ -21,7 +21,9 @@ let dao = {
                             foreignKey: 'author_id', // book表中的键 与 
                             targetKey: 'id' // author表中的键 对应
                         }),
-                    attributes: ['id', 'title', 'description']
+                    attributes: ['id', 'title', 'description'],
+                    // where: whereJson
+                    // include
                 },
             ]
         });
