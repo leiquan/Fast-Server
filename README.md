@@ -17,7 +17,7 @@
 
 #### 二、主要功能及规范：
 
-    每个model自带数据库12基本种操作（增、删、改、页查、全查、模糊查、求和、计数、一带一、一带多、事务）；
+    每个model自带数据库12基本种操作（增、删、改、查页、查全、模糊查、求和、计数、一带一、一带多、事务）；
 
     文件上传；
 
@@ -118,11 +118,11 @@
 
 #### 七、DAO 详解：
 
-    -- 1. 4个基本方法，增、删、改、查：add、delete、update、list（查询10条有分页）、all（查询全部无分页）
+    -- 1. 5个基本方法，增、删、改、查：add、delete、update、list（查页）、all（查全）
 
     -- 2. 4个高阶方法，求和、计数、自增、模糊搜索：sum、count、increment、search
 
-    -- 3. 关联查表方法，一对多：list_include（复数）；一对一：list_with（单数），此处请参考dao 代码，book/list_with_author 和 author/list_include_books
+    -- 3. 2个关联查表方法，一对多：list_include（复数）；一对一：list_with（单数），此处请参考dao 代码，book/list_with_author 和 author/list_include_books
 
     -- 4. 其他自定义方法，按照实际需求在每一个 model 对应的 dao中自由定制
 
