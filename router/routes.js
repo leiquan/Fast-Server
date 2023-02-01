@@ -38,7 +38,6 @@ let routes = function (router) {
     // 复制自 book 接口，其他接口完全可以参照
     '/author/add': './author/add',
     '/author/list': './author/list',
-    '/author/search': './author/search',
     '/author/list_include_books': './author/list_include_books',
 
   };
