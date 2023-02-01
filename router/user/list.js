@@ -14,7 +14,7 @@ router.post('/', async function (ctx, next) {
 
   ctx.body = {
     code: 0 ,
-    msg: '验证码发送成功',
+    msg: '列出用户',
     data: data
   };
 

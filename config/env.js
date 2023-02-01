@@ -2,10 +2,10 @@ let env = {
     dev: {
         mysql: {
             logging: true, // 是否打印数据库查询日志
-            dbname: 'testdb',
-            username: 'testdb',
-            password: 'testdb@18036',
-            host: 'agileloop.mysql.polardb.rds.aliyuncs.com',
+            dbname: 'deel',
+            username: 'deel',
+            password: '930102@deel',
+            host: '47.93.242.126',
             port: 3306,
             baseUrl: 'http://localhost:3002'
         },
@@ -23,10 +23,10 @@ let env = {
         },
         redis: {
             port: 6379,
-            host: '47.95.228.14',
+            host: '47.93.242.126',
             family: 4,
-            password: '930102@redis',
-            db: 1
+            password: 'redis@xiangwen',
+            db: 2
         }
     },
     online: {

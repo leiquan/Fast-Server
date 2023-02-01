@@ -10,7 +10,13 @@ router.post('/', async function (ctx, next) {
   let page = get.page;
   let pageSize = get.pageSize;
 
-  let data = await dao.list_include_books(post, page, pageSize);
+  let data = await dao.list_include({
+    table: 'book',
+    attributes: ['id', 'title', 'description']
+  }, {
+    foreignKey: 'author_id', // book 表中的键 与 
+    targetKey: 'id' // author 表中的键 对应
+  },post, page, pageSize);
 
   ctx.body = {
     code: 0,

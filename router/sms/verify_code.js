@@ -1,8 +1,8 @@
 let path = require("path");
 let router = require("koa-router")();
 let Sequelize = require("sequelize");
-let random = require("../../utils/lib/random");
-let http = require("../../utils/lib/http");
+let random = require("../../lib/random");
+let http = require("../../lib/http");
 let SMSClient = require('@alicloud/sms-sdk')
 let daoUser = require('../../dao/user');
 let { sms } = require('../../config/env');

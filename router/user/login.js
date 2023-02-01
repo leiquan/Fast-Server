@@ -4,7 +4,7 @@ let Sequelize = require('sequelize');
 
 let dao = require('../../dao/' + path.basename(__dirname));
 
-let md5 = require('../../utils/lib/md5');
+let md5 = require('../../lib/md5');
 
 router.post('/', async function (ctx, next) {
 

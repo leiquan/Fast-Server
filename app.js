@@ -13,11 +13,8 @@ let routes = require("./router/routes");
 // 事件监听注册列表
 require("./utils/event/__list");
 
-// 消息队列注册列表
-require("./utils/queue/__list");
-
 // 定时任务处理列表
-require("./utils/schedule/__list");
+require("./utils/crontab/__list");
 
 // 静态资源路径，开发接口并不需要 static，但是可能会上传文件
 let static = require('koa-static');
@@ -33,7 +30,7 @@ app.use(error);
 
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
 let daoLog = require("./dao/log");
-app.context.log = function(key = "untitled log", value = "") {
+app.context.log = function (key = "untitled log", value = "") {
   daoLog.add({
     key,
     value
@@ -55,7 +52,7 @@ app.use(body({ multipart: true }));
 // xml 解析的支持，并且挂载到cxt上，处理微信公众号等需要用到
 let xmlParser = require("koa-xml-body");
 app.use(xmlParser());
-app.use(function(ctx, next) {
+app.use(function (ctx, next) {
   ctx.xml = ctx.request.body;
   return next();
 });
@@ -64,7 +61,7 @@ app.use(function(ctx, next) {
 let cors = require("koa2-cors");
 app.use(
   cors({
-    origin: function(ctx) {
+    origin: function (ctx) {
       return "*"; // 允许来自所有域名请求,上线后请注意配置
     },
     credentials: true,
@@ -83,7 +80,6 @@ app.proxy = true;
 
 let port = process.env.PORT || 3000;
 const server = require("http").createServer(app.callback()).listen(port);
-require("./utils/socket/__socket")(server);
 
 // HTTPS配置
 // let options = {

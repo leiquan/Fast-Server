@@ -10,7 +10,7 @@ let { oss } = require('../../config/env');
 
 let client = new OSS(oss);
 
-let { timestamp, datestamp } = require('../../utils/lib/time');
+let { timestamp, datestamp } = require('../../lib/time');
 
 let request = require('request');
 

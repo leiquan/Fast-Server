@@ -1,4 +1,4 @@
-let login = require('../../config/for/auth');
+let login = require('../../config/auth');
 let enums = require('../../config/enums');
 
 let authHandler = async function (ctx, next) {

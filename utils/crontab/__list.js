@@ -2,7 +2,7 @@ let schedule = require('node-schedule');
 
 let scheduleList = function () {
 
-    // require('./backupDB');
+    require('./circle');
     // require('./date_todo');
 
 }
