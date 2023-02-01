@@ -124,7 +124,9 @@
 
     -- 3. 2个关联查表方法，一对多：list_include（复数）；一对一：list_with（单数），此处请参考dao 代码，book/list_with_author 和 author/list_include_books
 
-    -- 4. 其他自定义方法，按照实际需求在每一个 model 对应的 dao中自由定制
+    -- 4.事务请参照dao/book/sale_an_author_book
+
+    -- 5. 其他自定义方法，按照实际需求在每一个 model 对应的 dao中自由定制
 
 #### 八、PostMan 接口示例详解：
 
