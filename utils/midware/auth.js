@@ -1,12 +1,12 @@
-let login = require('../../config/auth');
+let needLoginUrl = require('../../config/auth');
 let enums = require('../../config/enums');
 
 let authHandler = async function (ctx, next) {
 
-    // 查看 url 是否在 login 里面，是则检验，否则就放行
+    // 查看 url 是否在 needLoginUrl 里面，是则检验，否则就放行
     let needLogin = false;
-    for (let i = 0; i < login.length; i++) {
-        if (ctx.request.url == login[i]) {
+    for (let i = 0; i < needLoginUrl.length; i++) {
+        if (ctx.request.url == needLoginUrl[i]) {
             needLogin = true;
         }
     }
