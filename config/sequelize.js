@@ -12,7 +12,7 @@ const sequelize = new Sequelize(mysql.dbname, mysql.username, mysql.password, {
     idle: 10000
   },
   timezone: '+08:00',
-  operatorsAliases: false
+  operatorsAliases: 0
 });
 
 sequelize.authenticate().then(() => {

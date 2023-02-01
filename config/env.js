@@ -1,7 +1,7 @@
 let env = {
     dev: {
         mysql: {
-            logging: true, // 是否打印数据库查询日志
+            logging: undefined, // 是否打印数据库查询日志
             dbname: 'deel',
             username: 'deel',
             password: '930102@deel',
@@ -65,7 +65,7 @@ let cfg = null;
 
 if (process.env.NODE_ENV == 'develop') {
     cfg = env.dev;
-    console.log('测试环境配置');
+    console.log('@@@@@@@@@@当前处于：测试环境！');
 } else {
     cfg = env.online; // 默认为线上环境，简化线上服务器的配置
     console.log('线上环境配置');
