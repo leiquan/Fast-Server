@@ -6,12 +6,12 @@ const enums = {
     status: {
         not_login: {
             code: -1,
-            message: '未登录!'
+            msg: '未登录!'
         },
 
         login_expired: {
             code: -2,
-            message: '登录过期!'
+            msg: '登录过期!'
         },
     }
 

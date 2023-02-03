@@ -21,13 +21,13 @@ let authHandler = async function (ctx, next) {
         if (!ctx.session.user) {
             ctx.body = {
                 code: enums.status.not_login.code,
-                msg: enums.status.not_login.message,
+                msg: enums.status.not_login.msg,
                 data: null
             };
         } else if (ctx.session._expire < new Date().getTime()) {
             ctx.body = {
                 code: enums.status.login_expired.code,
-                msg: enums.status.login_expired.message,
+                msg: enums.status.login_expired.msg,
                 data: null
             };
         } else {

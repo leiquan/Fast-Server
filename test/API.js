@@ -14,7 +14,7 @@ describe('API 测试：', function () {
       .expect(200, {
         code: 0,
         data: 36,
-        message: ''
+        msg: ''
       })
       .end(function (err, res) {
         should.not.exist(err);
