@@ -1,8 +1,8 @@
-## Agile Server
+## Fast Server
 
-### A simple, fast, complete Node.js server solution, based on KOA.
+### A fast running, fast developing Node.js server solution, based on KOA.
 
-开发速度超级快、快、快的 node API 解决方案，基于 KOA。 
+一个运行速度快、开发速度快的 Node.js 服务端解决方案，基于 KOA。 
 
 #### 一、运行启动（确保已经安装了Node JS）：
 
