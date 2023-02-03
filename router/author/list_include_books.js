@@ -16,8 +16,8 @@ router.post('/', async function (ctx, next) {
     table: 'book',
     attributes: ['id', 'title', 'description']
   }, {
-    foreignKey: 'author_id', // book 表中的键 与 
-    targetKey: 'id' // author 表中的键 对应
+    foreignKey: 'author_id',
+    targetKey: 'id'
   },post, page, pageSize);
 
   ctx.body = {

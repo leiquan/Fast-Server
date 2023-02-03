@@ -74,27 +74,6 @@ module.exports = function (model) {
             });
             return data;
         },
-
-        // 一带一
-        list_with: async function (include = {}, key = {}, whereJson = {}, page = 1, pageSize = 10) {
-            let data = await model.findAndCountAll({
-                logging: env.logging,
-                where: whereJson,
-                offset: pageSize * (page - 1),
-                limit: pageSize,
-                include: [
-                    {
-                        association: model.hasOne(require('../models/' + include.table),
-                            {
-                                foreignKey: key.foreignKey,
-                                targetKey: key.targetKey
-                            }),
-                        attributes: include.attributes// ['id', 'name', 'description']
-                    },
-                ]
-            });
-            return data;
-        },
         
         // 一带多
         list_include: async function (include = {}, key = {}, whereJson = {}, page = 1, pageSize = 10) {

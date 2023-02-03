@@ -18,13 +18,15 @@ router.post('/', async function (ctx, next) {
     let post = ctx.request.body;
 
     if (!post.username || !post.password || !post.phone || !post.verify_code) {
-        
+
         ctx.body = {
             code: 1,
             msg: '请检查输入！',
             data: null
         };
     } else {
+
+        // 注释掉短信验证码校验逻辑，若要恢复请取消注释
 
         // 验证码是否正确
         // let res_user = await daoUser.list({
@@ -45,23 +47,23 @@ router.post('/', async function (ctx, next) {
         //         };
         //     } else {
 
-                let res_reg = await daoUser.update({
-                    username: post.username,
-                    password: md5(post.password)
-                }, {
-                        phone: post.phone
-                    });
+        let res_reg = await daoUser.update({
+            username: post.username,
+            password: md5(post.password)
+        }, {
+            phone: post.phone
+        });
 
-                ctx.body = {
-                    code: 0,
-                    msg: '用户注册成功',
-                    data: res_reg
-                };
+        ctx.body = {
+            code: 0,
+            msg: '用户注册成功',
+            data: res_reg
+        };
 
-    //         }
-    //     }
+        //         }
+        //     }
 
-     }
+    }
 
 });
 

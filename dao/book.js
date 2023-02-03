@@ -24,13 +24,12 @@ let dao = {
 
                 ]).then(function () {
                     // 提交事务
-                    resolve('success');
+                    resolve('transaction success');
                 });
 
             })
             .catch(function (error) {
                 // 回滚事务
-
                 reject(error);
             });
 
