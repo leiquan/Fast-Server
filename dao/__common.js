@@ -1,4 +1,5 @@
 let Sequelize = require('sequelize');
+let sequelize = require('../config/sequelize');
 let path = require('path');
 let env = require('../config/env');
 

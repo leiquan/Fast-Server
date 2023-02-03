@@ -1,6 +1,5 @@
 let path = require("path");
 let sequelize = require('../config/sequelize');
-
 const modelName = path.basename(__filename, '.js');
 
 const model = sequelize.define(modelName, {

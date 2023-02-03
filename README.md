@@ -4,7 +4,13 @@
 
 一个运行速度快、开发速度快的 Node.js 服务端解决方案，基于 KOA
 
-#### 一、运行启动（确保已安装Node JS，确保已经在config/env里填写数据库等相关账号密码）：
+#### 一、运行启动
+
+前提1：确保已安装Node JS
+
+前提2：修改env中的服务器地址，使用你自己的
+
+前提3：复制password.sample.js并重命名为password.js，且填写正确的密码
 
     npm install     （安装依赖包）
 

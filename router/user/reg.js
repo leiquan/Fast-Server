@@ -1,8 +1,9 @@
 let path = require('path');
 let router = require('koa-router')();
 let Sequelize = require('sequelize');
-
 let dao = require('../../dao/' + path.basename(__dirname));
+let event = require('../../utils/event/__event');
+const Op = Sequelize.Op;
 
 let daoUser = require('../../dao/user');
 let md5 = require('../../lib/md5');
