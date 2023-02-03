@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "7ded0e6d-651f-4f69-a9a6-624821bb5803",
-		"name": "AgileServer示例接口",
+		"name": "FastServer示例接口",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "1302788"
 	},
@@ -26,18 +26,18 @@
 							"urlencoded": [
 								{
 									"key": "title",
-									"value": "《彷徨》",
+									"value": "《活着》",
 									"description": "添加两本书，一本《狂人日记》，一本《呐喊》",
 									"type": "text"
 								},
 								{
 									"key": "author_id",
-									"value": "1",
+									"value": "3",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "鲁迅的代表作",
+									"value": "余华代表作",
 									"type": "text"
 								},
 								{
@@ -79,13 +79,13 @@
 							"urlencoded": [
 								{
 									"key": "price",
-									"value": "120.50",
+									"value": "220.50",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/book/update?id=1",
+							"raw": "http://localhost:3000/book/update?id=3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -98,7 +98,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -119,14 +119,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "t",
-									"value": "1",
-									"type": "text",
-									"disabled": true
-								}
-							]
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "http://localhost:3000/book/list",
@@ -371,44 +364,6 @@
 							]
 						},
 						"description": "列出书籍，默认10条数据，有翻页功能"
-					},
-					"response": []
-				},
-				{
-					"name": "列出书籍，包含作者（一个）",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "id",
-									"value": "1",
-									"type": "text",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/book/list_with_author",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"book",
-								"list_with_author"
-							]
-						}
 					},
 					"response": []
 				},
@@ -715,12 +670,12 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "鲁迅",
+									"value": "余华",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "鲁迅（1881年9月25日－1936年10月19日），原名周樟寿，后改名周树人，字豫山，后改豫才，“鲁迅”是他1918年发表《狂人日记》时所用的笔名，也是他影响最为广泛的笔名，浙江绍兴人。",
+									"value": "活着",
 									"type": "text"
 								}
 							]
@@ -754,13 +709,7 @@
 						],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "鲁迅",
-									"type": "text"
-								}
-							]
+							"urlencoded": []
 						},
 						"url": {
 							"raw": "http://localhost:3000/author/list",
@@ -779,7 +728,7 @@
 					"response": []
 				},
 				{
-					"name": "模糊search作者",
+					"name": "列出作者，包含所有书籍（一对多）",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -795,46 +744,9 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "鲁",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:3000/author/search",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"author",
-								"search"
-							]
-						},
-						"description": "列出书籍，默认10条数据，有翻页功能"
-					},
-					"response": []
-				},
-				{
-					"name": "列出作者，包含所有书籍（多个）",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "鲁迅",
-									"type": "text"
+									"value": "刘慈欣",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},

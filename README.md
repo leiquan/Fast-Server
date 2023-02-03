@@ -23,7 +23,7 @@
 
 #### 二、主要功能及规范：
 
-    每个model自带数据库11基本种操作（增、删、改、查页、查全、模糊查[借助list或者all，参考router/book/search]、求和、计数、自增、一带一、一带多），支持事务
+    每个model自带数据库11基本种操作（增、删、改、查页、查全、模糊查[借助list或者all，参考router/book/search]、求和、计数、自增、一带多），支持事务
 
     文件上传
 
@@ -130,7 +130,7 @@
 
     -- 2. 4个高阶方法，求和、计数、自增、模糊搜索：sum、count、increment、search
 
-    -- 3. 2个关联查表方法，一对多：list_include（复数）一对一：list_with（单数），此处请参考dao 代码，book/list_with_author 和 author/list_include_books
+    -- 3. 一对多关联查表方法，一对多：list_include（复数），此处请参考dao 代码： author/list_include_books
 
     -- 4.事务请参照dao/book/sale_an_author_book
 
