@@ -49,6 +49,6 @@
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
-    "mocha": "^5.2.0"
+    "mocha": "^10.2.0"
   }
 }
