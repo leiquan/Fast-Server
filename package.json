@@ -41,7 +41,7 @@
     "pm2": "^5.2.2",
     "qr-image": "^3.2.0",
     "request": "^2.83.0",
-    "sequelize": "^5.21.2",
+    "sequelize": "^6.29.0",
     "should": "^13.2.3",
     "socket.io": "^2.3.0",
     "supertest": "^3.3.0",
