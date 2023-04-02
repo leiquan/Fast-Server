@@ -1,6 +1,7 @@
-let http = require("http");
+let http = require("http")
 let Koa = require("koa");
 let Router = require("koa-router");
+let EventEmitter = require('events').EventEmitter;
 let router = new Router();
 let app = new Koa();
 
@@ -11,10 +12,11 @@ app.keys = ["I am a session key! My random number is 6291619!"];
 let routes = require("./router/routes");
 
 // 事件监听注册列表
-require("./utils/event/__list");
+global.EventEmitter = new EventEmitter();
+require("./utils/event");
 
 // 定时任务处理列表
-require("./utils/crontab/__list");
+require("./utils/crontab");
 
 // 静态资源路径，开发接口并不需要 static，但是可能会上传文件
 let static = require('koa-static');
@@ -30,7 +32,7 @@ app.use(error);
 
 // 挂载在 context 上的快捷方法：log，可以将日志写入数据库
 let daoLog = require("./dao/log");
-app.context.log = function (key = "untitled log", value = "") {
+global.log = function (key = "untitled log", value = "") {
   daoLog.add({
     key,
     value
@@ -42,8 +44,8 @@ let session = require("koa-generic-session");
 app.use(session(require("./config/session")));
 
 // 引入自定义的用户认证中间件，处理需要鉴权的用户列表
-let auth = require("./utils/midware/auth");
-app.use(auth);
+let needLoginUrl = require("./utils/midware/needLoginUrl");
+app.use(needLoginUrl);
 
 // 文件上传的支持
 let body = require("koa-body");
@@ -79,11 +81,5 @@ app.use(router.routes()).use(router.allowedMethods());
 app.proxy = true;
 
 let port = process.env.PORT || 3000;
-const server = require("http").createServer(app.callback()).listen(port);
-
-// HTTPS配置
-// let options = {
-//   key: fs.readFileSync('/Users/leiquan/key/privkey.pem'),
-//   cert: fs.readFileSync('/Users/leiquan/key/cert.pem')
-// };
-// https.createServer(options, app.callback()).listen(port);
+http.createServer(app.callback()).listen(port);
+console.log(`FastServer 运行在 ${port}端口！！！`);

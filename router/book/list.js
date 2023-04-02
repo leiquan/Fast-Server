@@ -2,7 +2,7 @@ let path = require('path');
 let router = require('koa-router')();
 let Sequelize = require('sequelize');
 let dao = require('../../dao/' + path.basename(__dirname));
-let event = require('../../utils/event/__event');
+
 const Op = Sequelize.Op;
 
 router.post('/', async function (ctx, next) {
@@ -14,7 +14,7 @@ router.post('/', async function (ctx, next) {
 
   let data = await dao.list(post, page, pageSize);
 
-  event.emit('some_event', '我是测试数据'); 
+  EventBus.emit('some_event', '我是测试数据'); 
 
   ctx.body = {
     code: 0,

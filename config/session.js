@@ -14,7 +14,7 @@ let session = {
     host: env.redis.host,
     port: env.redis.port,
     auth_pass: env.redis.password,
-    db: 0, // session 放在 db0,log 放在 db1
+    db: 0, // session 放在 db0
   })
 };
 
