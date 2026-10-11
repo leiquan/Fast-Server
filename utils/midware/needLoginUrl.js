@@ -3,13 +3,8 @@ let enums = require('../../config/enums');
 
 let authHandler = async function (ctx, next) {
 
-    // 查看 url 是否在 needLoginUrl 里面，是则检验，否则就放行
-    let needLogin = false;
-    for (let i = 0; i < needLoginUrl.length; i++) {
-        if (ctx.request.url == needLoginUrl[i]) {
-            needLogin = true;
-        }
-    }
+    // 按路径匹配保护名单，查询参数不应影响登录校验
+    let needLogin = needLoginUrl.includes(ctx.path);
 
     if (!needLogin) {
         await next();

@@ -4,12 +4,11 @@ let env = {
     dev: {
         mysql: {
             logging: undefined, // 是否打印数据库查询日志
-            dbname: 'deel',
-            username: 'deel',
+            dbname: 'test',
+            username: 'root',
             password: password.mysql,
-            host: '47.93.242.126',
-            port: 3306,
-            baseUrl: 'http://localhost:3002'
+            host: '127.0.0.1',
+            port: 3306
         },
         oss: {
             region: 'oss-cn-qingdao',
@@ -38,8 +37,7 @@ let env = {
             username: 'testdb',
             password: password.mysql,
             host: '****',
-            port: 3306,
-            baseUrl: 'http://localhost:3002'
+            port: 3306
         },
         oss: {
             region: 'oss-cn-qingdao',
